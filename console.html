@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ingkavara Delivery Console — Pitsamorn Ingkavara</title>
+<meta name="description" content="An enterprise console view of the delivery portfolio — S/4HANA test management, transformation programmes, data governance and CV.">
+<meta name="author" content="Pitsamorn Ingkavara">
+<meta name="theme-color" content="#101B33">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23101B33'/%3E%3Crect x='10' y='14' width='44' height='10' rx='3' fill='%232563EB'/%3E%3Crect x='10' y='29' width='28' height='7' rx='3' fill='%239FB0CE'/%3E%3Crect x='10' y='41' width='36' height='7' rx='3' fill='%239FB0CE'/%3E%3C/svg%3E">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Ingkavara Delivery Console — Pitsamorn Ingkavara">
+<meta property="og:description" content="An enterprise console view of the delivery portfolio — S/4HANA test management, transformation programmes, data governance and CV.">
+<meta property="og:image" content="gal/uat-exit-analyzer.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<style>
+:root{
+  --app-bg:#F4F6FB; --surface:#FFFFFF; --surface-2:#F8FAFD;
+  --side:#101B33; --side-2:#1B2947; --side-txt:#9FB0CE; --side-active:#2563EB;
+  --line:#E4E9F2; --line-2:#EEF2F8;
+  --txt:#111A2E; --txt-2:#4E5C75; --txt-3:#8493AE;
+  --primary:#2563EB; --primary-d:#1D4FD8; --primary-w:#EAF0FE;
+  --accent:#06B6D4;
+  --ok:#0E9F6E; --ok-w:#E3F6EF; --warn:#B45309; --warn-w:#FDF2E3;
+  --err:#DC2626; --err-w:#FDECEC; --neutral-w:#EFF3F9;
+  --r:14px; --r-sm:10px;
+  --sh:0 1px 2px rgba(16,27,51,.05), 0 6px 20px -10px rgba(16,27,51,.14);
+  --sh-2:0 10px 34px -12px rgba(16,27,51,.30);
+  --grad:linear-gradient(135deg,#2563EB 0%,#4F46E5 52%,#06B6D4 130%);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --app-bg:#080D1A; --surface:#111A2D; --surface-2:#18233A;
+    --side:#070C18; --side-2:#131E33; --side-txt:#8EA0BF; --side-active:#3B82F6;
+    --line:#233047; --line-2:#1A2438;
+    --txt:#E9EEF8; --txt-2:#AEBBD2; --txt-3:#7E8DA8;
+    --primary:#6098FF; --primary-d:#7FADFF; --primary-w:#132342;
+    --accent:#22D3EE;
+    --ok:#34C793; --ok-w:#0F2E24; --warn:#E0A043; --warn-w:#33260F;
+    --err:#F1706A; --err-w:#3A1A19; --neutral-w:#1A2438;
+    --sh:0 1px 2px rgba(0,0,0,.55), 0 6px 20px -10px rgba(0,0,0,.7);
+    --sh-2:0 10px 34px -12px rgba(0,0,0,.85);
+    --grad:linear-gradient(135deg,#1E4FD8 0%,#4338CA 52%,#0891B2 130%);
+  }
+}
+:root[data-theme="dark"]{
+  --app-bg:#080D1A; --surface:#111A2D; --surface-2:#18233A;
+  --side:#070C18; --side-2:#131E33; --side-txt:#8EA0BF; --side-active:#3B82F6;
+  --line:#233047; --line-2:#1A2438;
+  --txt:#E9EEF8; --txt-2:#AEBBD2; --txt-3:#7E8DA8;
+  --primary:#6098FF; --primary-d:#7FADFF; --primary-w:#132342;
+  --accent:#22D3EE;
+  --ok:#34C793; --ok-w:#0F2E24; --warn:#E0A043; --warn-w:#33260F;
+  --err:#F1706A; --err-w:#3A1A19; --neutral-w:#1A2438;
+  --sh:0 1px 2px rgba(0,0,0,.55), 0 6px 20px -10px rgba(0,0,0,.7);
+  --sh-2:0 10px 34px -12px rgba(0,0,0,.85);
+  --grad:linear-gradient(135deg,#1E4FD8 0%,#4338CA 52%,#0891B2 130%);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:var(--app-bg); color:var(--txt); overflow:hidden;
+  font-family:"Plus Jakarta Sans",-apple-system,Segoe UI,Roboto,sans-serif; font-size:14px; line-height:1.58; letter-spacing:-.005em;
+}
+h1,h2,h3,h4{margin:0; font-weight:800; color:var(--txt); line-height:1.22; letter-spacing:-.025em}
+p{margin:0}
+img{max-width:100%; display:block}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--primary); outline-offset:2px; border-radius:3px}
+.mono{font-family:"Roboto Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){ *{transition-duration:.01ms!important; animation:none!important} }
+
+/* ══ SHELL ══ */
+.app{display:grid; grid-template-columns:268px 1fr; height:100dvh; overflow:hidden}
+
+/* ── sidebar ── */
+.side{background:linear-gradient(180deg,var(--side) 0%, var(--side-2) 140%); display:flex; flex-direction:column; min-height:0; z-index:40; position:relative}
+.side::after{content:""; position:absolute; right:0; top:0; bottom:0; width:1px; background:linear-gradient(180deg,transparent,rgba(255,255,255,.12),transparent)}
+.side-top{padding:20px 18px 18px; display:flex; align-items:center; gap:12px}
+.logo{
+  width:38px; height:38px; border-radius:12px; background:var(--grad); color:#fff;
+  display:grid; place-items:center; font-weight:800; font-size:14px; flex:0 0 auto;
+  box-shadow:0 6px 18px -6px rgba(37,99,235,.9); letter-spacing:-.03em;
+}
+.side-top .t{color:#fff; font-size:14.5px; font-weight:700; line-height:1.2; letter-spacing:-.015em}
+.side-top .s{color:var(--side-txt); font-size:10px; letter-spacing:.13em; text-transform:uppercase; margin-top:3px; font-weight:600}
+.side-scroll{flex:1; overflow-y:auto; padding:8px 12px 14px; min-height:0}
+.grp{font-size:9.5px; letter-spacing:.16em; text-transform:uppercase; color:#61759B; padding:16px 10px 8px; font-weight:700}
+.navitem{
+  display:flex; align-items:center; gap:12px; width:100%; text-align:left;
+  padding:9px 10px; border:0; border-radius:11px; background:transparent;
+  color:var(--side-txt); font-size:13.5px; font-weight:500; cursor:pointer;
+  transition:background .18s, color .18s; margin-bottom:3px; position:relative;
+  font-family:inherit; letter-spacing:-.01em; white-space:nowrap;
+}
+.navitem:hover{background:rgba(255,255,255,.06); color:#fff}
+.navitem .ib{
+  width:30px; height:30px; border-radius:9px; display:grid; place-items:center; flex:0 0 auto;
+  background:rgba(255,255,255,.07); transition:.18s;
+}
+.navitem svg{width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:1.8}
+.navitem[aria-current="true"]{background:rgba(37,99,235,.18); color:#fff; font-weight:700}
+.navitem[aria-current="true"] .ib{background:var(--grad); color:#fff; box-shadow:0 5px 14px -5px rgba(37,99,235,.95)}
+.navitem[aria-current="true"]::before{
+  content:""; position:absolute; left:-12px; top:9px; bottom:9px; width:3px;
+  border-radius:0 3px 3px 0; background:var(--accent);
+}
+.navitem .ct{
+  margin-left:auto; flex:0 0 auto; font-size:10px; padding:2px 8px; border-radius:20px; font-weight:600;
+  background:rgba(255,255,255,.10); color:#CBD8EE; font-family:"Roboto Mono",monospace;
+}
+.navitem[aria-current="true"] .ct{background:rgba(255,255,255,.18); color:#fff}
+.side-foot{padding:14px 16px 16px; margin:0 12px 10px; border-radius:12px; background:rgba(255,255,255,.05); display:flex; align-items:center; gap:11px}
+.av{width:36px; height:36px; border-radius:11px; background:var(--grad); color:#fff; display:grid; place-items:center; font-weight:700; font-size:13px; flex:0 0 auto}
+.side-foot .n{color:#fff; font-size:12.5px; font-weight:700; line-height:1.25; letter-spacing:-.01em}
+.side-foot .r{color:var(--side-txt); font-size:11px; line-height:1.35; display:flex; align-items:center; gap:6px; margin-top:2px}
+.side-foot .r i{width:6px; height:6px; border-radius:50%; background:#34D399; display:inline-block}
+
+/* ── main ── */
+.main{display:flex; flex-direction:column; min-width:0; min-height:0}
+.topbar{
+  background:color-mix(in srgb,var(--surface) 86%, transparent); backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line); padding:0 26px;
+  height:64px; display:flex; align-items:center; gap:14px; flex:0 0 auto; z-index:30;
+}
+.burger{display:none; background:transparent; border:1px solid var(--line); border-radius:var(--r); width:34px; height:34px; cursor:pointer; color:var(--txt-2)}
+.crumb{font-size:11px; color:var(--txt-3); display:flex; gap:7px; align-items:center; font-weight:600; letter-spacing:.02em}
+.crumb b{color:var(--txt-2); font-weight:600}
+.topbar h1{font-size:17px; font-weight:800; letter-spacing:-.025em}
+.tb-r{margin-left:auto; display:flex; align-items:center; gap:9px}
+.btn{
+  display:inline-flex; align-items:center; gap:7px; padding:9px 16px; border-radius:10px;
+  border:1px solid transparent; background:var(--grad); color:#fff; font-size:13px; font-weight:700;
+  cursor:pointer; text-decoration:none; transition:.15s; white-space:nowrap;
+}
+.btn:hover{filter:brightness(1.08); transform:translateY(-1px); box-shadow:0 8px 20px -10px rgba(37,99,235,.9)}
+.btn.sec{background:var(--primary-w); color:var(--primary); border-color:transparent}
+.btn.sec:hover{filter:none; background:var(--primary-w); box-shadow:none}
+.btn.gho{background:var(--surface); border-color:var(--line); color:var(--txt-2); font-weight:600}
+.btn.gho:hover{background:var(--surface-2); color:var(--txt); filter:none; box-shadow:none}
+.btn svg{width:15px; height:15px; stroke:currentColor; fill:none; stroke-width:1.8}
+
+.content{flex:1; overflow-y:auto; padding:22px; min-height:0; scroll-behavior:smooth}
+.view{display:none} .view.on{display:block}
+.pagehead{margin-bottom:18px}
+.pagehead h2{font-size:23px; letter-spacing:-.03em}
+.pagehead p{color:var(--txt-2); margin-top:6px; max-width:78ch; font-size:13.5px}
+
+/* ── hero band ── */
+.hero{
+  position:relative; overflow:hidden; border-radius:18px; padding:34px 36px;
+  background:var(--grad); color:#fff; margin-bottom:20px;
+  box-shadow:0 18px 40px -22px rgba(37,99,235,.85);
+}
+.hero::after{
+  content:""; position:absolute; right:-90px; top:-120px; width:420px; height:420px;
+  border-radius:50%; background:radial-gradient(circle,rgba(255,255,255,.22),transparent 62%);
+}
+.hero .tagline{
+  display:inline-flex; align-items:center; gap:8px; font-size:10.5px; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.85);
+  background:rgba(255,255,255,.14); padding:6px 13px; border-radius:20px; margin-bottom:18px;
+}
+.hero h2{color:#fff; font-size:clamp(23px,2.7vw,32px); max-width:24ch; letter-spacing:-.035em; position:relative; z-index:2}
+.hero p{color:rgba(255,255,255,.82); margin-top:14px; max-width:70ch; font-size:14.5px; line-height:1.65; position:relative; z-index:2}
+.hero .hstats{display:flex; flex-wrap:wrap; gap:34px; margin-top:26px; position:relative; z-index:2}
+.hero .hstats div .v{font-size:26px; font-weight:800; letter-spacing:-.035em; font-variant-numeric:tabular-nums}
+.hero .hstats div .k{font-size:11.5px; color:rgba(255,255,255,.78); margin-top:3px}
+@media (max-width:640px){ .hero{padding:26px 22px} .hero .hstats{gap:20px} }
+
+/* ── CV view ── */
+.cvwrap{display:grid; grid-template-columns:repeat(2,1fr); gap:18px; align-items:start}
+@media (max-width:1000px){ .cvwrap{grid-template-columns:1fr} }
+.cvpage{
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--r);
+  box-shadow:var(--sh-2); overflow:hidden; padding:0; cursor:zoom-in; transition:.22s;
+  display:block; width:100%; font-family:inherit;
+}
+.cvpage:hover{transform:translateY(-3px); box-shadow:0 16px 44px -16px rgba(16,27,51,.4); border-color:var(--primary)}
+.cvpage .lbl{
+  padding:11px 16px; border-bottom:1px solid var(--line-2); display:flex; align-items:center; gap:10px;
+  font-size:12.5px; font-weight:700; color:var(--txt); text-align:left;
+}
+.cvpage .lbl span{margin-left:auto; font-family:"Roboto Mono",monospace; font-size:10.5px; color:var(--txt-3); font-weight:500}
+.cvpage img{width:100%; display:block}
+
+/* ── cards ── */
+.card{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); box-shadow:var(--sh); margin-bottom:16px; overflow:hidden}
+.card-h{padding:16px 20px; border-bottom:1px solid var(--line-2); display:flex; align-items:center; gap:12px}
+.card-h h3{font-size:15px; letter-spacing:-.02em}
+.card-h .sub{font-size:12px; color:var(--txt-3); margin-top:2px}
+.card-h .r{margin-left:auto; display:flex; gap:8px; align-items:center}
+.card-b{padding:20px}
+.card-b.tight{padding:0}
+
+.row{display:grid; gap:16px; margin-bottom:16px}
+.row.c2{grid-template-columns:repeat(2,1fr)}
+.row.c3{grid-template-columns:repeat(3,1fr)}
+.row.c4{grid-template-columns:repeat(4,1fr)}
+.row.c2-1{grid-template-columns:2fr 1fr}
+@media (max-width:1100px){ .row.c4{grid-template-columns:repeat(2,1fr)} .row.c3,.row.c2-1{grid-template-columns:1fr} }
+@media (max-width:720px){ .row.c2,.row.c4{grid-template-columns:1fr} }
+
+/* ── KPI tile ── */
+.kpi{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:18px 20px; box-shadow:var(--sh); position:relative; overflow:hidden}
+.kpi::before{content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--grad)}
+.kpi.ok::before{background:linear-gradient(180deg,#10B981,#0E9F6E)}
+.kpi.warn::before{background:linear-gradient(180deg,#F59E0B,#B45309)}
+.kpi.err::before{background:linear-gradient(180deg,#F87171,#DC2626)}
+.kpi .lab{font-size:10.5px; letter-spacing:.11em; text-transform:uppercase; color:var(--txt-3); font-weight:700}
+.kpi .val{font-size:30px; font-weight:800; line-height:1.05; margin-top:9px; font-variant-numeric:tabular-nums; letter-spacing:-.035em}
+.kpi.ok .val{color:var(--ok)} .kpi.warn .val{color:var(--warn)} .kpi.err .val{color:var(--err)}
+.kpi .sub{font-size:12px; color:var(--txt-2); margin-top:7px; line-height:1.45}
+
+/* ── badges ── */
+.bdg{display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:700; padding:4px 10px; border-radius:20px; background:var(--neutral-w); color:var(--txt-2); white-space:nowrap}
+.bdg.ok{background:var(--ok-w); color:var(--ok)}
+.bdg.warn{background:var(--warn-w); color:var(--warn)}
+.bdg.err{background:var(--err-w); color:var(--err)}
+.bdg.pri{background:var(--primary-w); color:var(--primary)}
+.dot{width:6px; height:6px; border-radius:50%; background:currentColor}
+
+/* ── table ── */
+.tbl{width:100%; border-collapse:collapse; font-size:13px}
+.tbl th{
+  text-align:left; padding:11px 20px; background:var(--surface-2); color:var(--txt-3);
+  font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--line); white-space:nowrap;
+}
+.tbl td{padding:12px 20px; border-bottom:1px solid var(--line-2); color:var(--txt-2); vertical-align:top; line-height:1.5}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tbody tr:hover td{background:var(--surface-2)}
+.tbl td b, .tbl td strong{color:var(--txt); font-weight:600}
+.tbl .num{text-align:right; font-family:"Roboto Mono",monospace; font-variant-numeric:tabular-nums; white-space:nowrap}
+.tblwrap{overflow-x:auto}
+
+/* ── progress ── */
+.prog{height:7px; border-radius:4px; background:var(--neutral-w); overflow:hidden; min-width:70px}
+.prog i{display:block; height:100%; border-radius:4px; background:var(--primary)}
+.prog i.ok{background:var(--ok)} .prog i.warn{background:var(--warn)} .prog i.err{background:var(--err)}
+.pline{display:flex; align-items:center; gap:12px}
+.pline .nm{flex:1; min-width:0; font-size:13px}
+.pline .pc{width:58px; text-align:right; font-family:"Roboto Mono",monospace; font-size:12.5px; font-weight:500; color:var(--txt)}
+.pline .prog{width:160px; flex:0 0 auto}
+@media (max-width:600px){ .pline .prog{width:90px} }
+
+/* ── list rows ── */
+.lrow{display:flex; gap:14px; align-items:flex-start; padding:15px 20px; border-bottom:1px solid var(--line-2)}
+.lrow:last-child{border-bottom:none}
+.lrow:hover{background:var(--surface-2)}
+.lrow .ic{width:36px; height:36px; border-radius:11px; background:var(--primary-w); color:var(--primary); display:grid; place-items:center; flex:0 0 auto}
+.lrow .ic svg{width:17px; height:17px; stroke:currentColor; fill:none; stroke-width:1.7}
+.lrow .bd{flex:1; min-width:0}
+.lrow .bd .t{font-size:13.5px; font-weight:600; color:var(--txt)}
+.lrow .bd .d{font-size:12.5px; color:var(--txt-2); margin-top:3px; line-height:1.5}
+.lrow .rt{flex:0 0 auto; text-align:right}
+
+/* ── bullets ── */
+.blist{margin:0; padding:0; list-style:none}
+.blist li{font-size:13px; color:var(--txt-2); line-height:1.55; padding-left:17px; position:relative; margin-bottom:7px}
+.blist li:last-child{margin-bottom:0}
+.blist li::before{content:""; position:absolute; left:0; top:.6em; width:7px; height:2px; border-radius:2px; background:var(--primary)}
+.blist li b{color:var(--txt); font-weight:600}
+
+/* ── tabs ── */
+.tabs{display:flex; gap:2px; border-bottom:1px solid var(--line); margin-bottom:16px; overflow-x:auto}
+.tab{
+  background:transparent; border:0; border-bottom:2px solid transparent; padding:11px 16px;
+  font-size:13px; font-weight:700; color:var(--txt-3); cursor:pointer; white-space:nowrap; transition:.15s;
+  font-family:inherit; letter-spacing:-.01em;
+}
+.tab:hover{color:var(--txt)}
+.tab[aria-selected="true"]{color:var(--primary); border-bottom-color:var(--primary)}
+.pane{display:none} .pane.on{display:block}
+
+/* ── gallery ── */
+.filters{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:16px}
+.fbtn{
+  padding:8px 15px; border-radius:20px; border:1px solid var(--line); background:var(--surface);
+  color:var(--txt-2); font-size:12.5px; font-weight:600; cursor:pointer; transition:.15s; font-family:inherit;
+}
+.fbtn:hover{border-color:var(--primary); color:var(--primary)}
+.fbtn[aria-pressed="true"]{background:var(--grad); border-color:transparent; color:#fff; box-shadow:0 6px 16px -8px rgba(37,99,235,.9)}
+.gal{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:14px}
+.tile{
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--r); overflow:hidden;
+  box-shadow:var(--sh); cursor:zoom-in; padding:0; text-align:left; transition:.22s; display:flex; flex-direction:column;
+  font-family:inherit;
+}
+.tile:hover{box-shadow:var(--sh-2); transform:translateY(-3px); border-color:var(--primary)}
+.tile .im{background:var(--surface-2); border-bottom:1px solid var(--line-2); aspect-ratio:16/9; overflow:hidden}
+.tile .im img{width:100%; height:100%; object-fit:cover; object-position:top}
+.tile .mt{padding:11px 13px 13px}
+.tile .mt .t{font-size:12.8px; font-weight:600; color:var(--txt); line-height:1.35}
+.tile .mt .b{margin-top:8px}
+.tile[hidden]{display:none}
+
+/* ── timeline ── */
+.tline{position:relative; padding-left:26px}
+.tline::before{content:""; position:absolute; left:7px; top:6px; bottom:6px; width:2px; background:var(--line)}
+.tev{position:relative; padding-bottom:20px}
+.tev:last-child{padding-bottom:0}
+.tev::before{content:""; position:absolute; left:-23px; top:5px; width:10px; height:10px; border-radius:50%; background:var(--surface); border:2px solid var(--primary)}
+.tev.now::before{background:var(--primary)}
+.tev .yr{font-family:"Roboto Mono",monospace; font-size:11.5px; color:var(--primary); font-weight:500}
+.tev .ti{font-size:14px; font-weight:700; margin-top:3px}
+.tev .ro{font-size:13px; color:var(--primary); font-weight:600; margin-top:2px}
+.tev .de{font-size:12.8px; color:var(--txt-2); margin-top:7px; line-height:1.55; max-width:80ch}
+.tev .tg{display:flex; gap:6px; flex-wrap:wrap; margin-top:9px}
+
+/* ── modal ── */
+.modal{position:fixed; inset:0; background:rgba(16,24,40,.6); z-index:100; display:none; padding:22px}
+.modal.on{display:flex; align-items:center; justify-content:center}
+.mbox{background:var(--surface); border-radius:var(--r); max-width:1180px; width:100%; max-height:100%; display:flex; flex-direction:column; box-shadow:var(--sh-2); overflow:hidden}
+.mh{padding:14px 18px; border-bottom:1px solid var(--line); display:flex; gap:14px; align-items:flex-start}
+.mh h3{font-size:14.5px}
+.mh p{font-size:12.5px; color:var(--txt-2); margin-top:5px; line-height:1.5; max-width:90ch}
+.mx{background:transparent; border:1px solid var(--line); border-radius:var(--r); width:30px; height:30px; cursor:pointer; color:var(--txt-2); flex:0 0 auto; font-size:14px}
+.mx:hover{background:var(--surface-2); color:var(--txt)}
+.mb{padding:16px 18px; overflow:auto; background:var(--surface-2); display:flex; align-items:center; justify-content:center; min-height:0}
+.mb img{max-width:100%; max-height:100%; object-fit:contain; border:1px solid var(--line); border-radius:4px; background:#fff}
+.mf{padding:10px 18px; border-top:1px solid var(--line); display:flex; align-items:center; gap:10px}
+.mf .pg{font-family:"Roboto Mono",monospace; font-size:12px; color:var(--txt-3); margin-left:auto}
+
+/* ── responsive shell ── */
+.scrim{display:none; position:fixed; inset:0; background:rgba(16,24,40,.5); z-index:35}
+@media (max-width:900px){
+  .app{grid-template-columns:1fr}
+  .side{position:fixed; left:0; top:0; bottom:0; width:268px; transform:translateX(-100%); transition:transform .25s}
+  .side.open{transform:translateX(0)}
+  .scrim.on{display:block}
+  .burger{display:grid; place-items:center}
+  .topbar{padding:0 14px} .content{padding:14px}
+  .topbar h1{font-size:14.5px} .crumb{display:none}
+}
+@media (max-width:640px){
+  .tb-r .btn.sec, .tb-r .btn.gho{display:none}
+  .tb-r .btn{padding:8px 12px}
+}
+
+</style>
+</head>
+<body>
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></symbol>
+  <symbol id="i-flow" viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M9 6h6a3 3 0 013 3v6"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+  <symbol id="i-img" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></symbol>
+  <symbol id="i-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6M10 14L21 3"/></symbol>
+</svg>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="app">
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="side" id="side">
+    <div class="side-top">
+      <span class="logo">PI</span>
+      <div>
+        <div class="t">Delivery Console</div>
+        <div class="s">Portfolio 2026</div>
+      </div>
+    </div>
+    <div class="side-scroll">
+      <div class="grp">Overview</div>
+      <button class="navitem" type="button" data-v="dash" aria-current="true"><span class="ib"><svg><use href="#i-grid"/></svg></span> Dashboard</button>
+
+      <div class="grp">Programmes</div>
+      <button class="navitem" type="button" data-v="test"><span class="ib"><svg><use href="#i-check"/></svg></span> Test Management <span class="ct">4,071</span></button>
+      <button class="navitem" type="button" data-v="trans"><span class="ib"><svg><use href="#i-flow"/></svg></span> Transformation <span class="ct">8→2</span></button>
+      <button class="navitem" type="button" data-v="data"><span class="ib"><svg><use href="#i-db"/></svg></span> Data Governance <span class="ct">39</span></button>
+
+      <div class="grp">Library</div>
+      <button class="navitem" type="button" data-v="gal"><span class="ib"><svg><use href="#i-img"/></svg></span> Deliverables <span class="ct">26</span></button>
+      <button class="navitem" type="button" data-v="cv"><span class="ib"><svg><use href="#i-doc"/></svg></span> Curriculum Vitae</button>
+      <button class="navitem" type="button" data-v="prof"><span class="ib"><svg><use href="#i-user"/></svg></span> Profile</button>
+    </div>
+    <div class="side-foot">
+      <span class="av">PI</span>
+      <div>
+        <div class="n">Pitsamorn Ingkavara</div>
+        <div class="r"><i></i> Bangkok · Available</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ══ MAIN ══ -->
+  <div class="main">
+    <header class="topbar">
+      <button class="burger" id="burger" type="button" aria-label="Open navigation"><svg width="17" height="17" stroke="currentColor" fill="none" stroke-width="1.8"><use href="#i-menu"/></svg></button>
+      <div>
+        <div class="crumb">Portfolio <span>/</span> <b id="crumb">Dashboard</b></div>
+        <h1 id="ptitle">Dashboard</h1>
+      </div>
+      <div class="tb-r">
+        <a class="btn gho" href="index.html"><svg><use href="#i-ext"/></svg> Landing page</a>
+        <a class="btn sec" href="docs/Resume_Pitsamorn_Ingkavara_2026.pdf" download><svg><use href="#i-dl"/></svg> CV</a>
+        <a class="btn" href="mailto:pingkavara@gmail.com?subject=Programme%20enquiry"><svg><use href="#i-mail"/></svg> Contact</a>
+      </div>
+    </header>
+
+    <main class="content" id="content">
+
+      <!-- ════════ DASHBOARD ════════ -->
+      <section class="view on" id="v-dash">
+        <div class="hero">
+          <span class="tagline">Portfolio 2026 · Bangkok</span>
+          <h2>Sixteen years making enterprise SAP programmes provable before they go live.</h2>
+          <p>ERP Project Manager and PMO Lead with 16+ years delivering large-scale SAP S/4HANA and Ariba transformations across PTT Group. Proven in PM methodology, on-time / on-scope / on-budget delivery, formal change control and Steering Committee reporting. Skilled in Jira, MS Project and hybrid delivery (Waterfall &amp; Agile/Scrum) — and leverages agentic AI and vibe-coding to automate PM workflows, Jira dashboards, UAT schedulers and delay-analysis reports.</p>
+          <div class="hstats">
+            <div><div class="v">16+</div><div class="k">Years delivering</div></div>
+            <div><div class="v">3</div><div class="k">Disciplines owned</div></div>
+            <div><div class="v">26</div><div class="k">Artefacts on file</div></div>
+            <div><div class="v">5</div><div class="k">PTT Group companies served</div></div>
+          </div>
+        </div>
+
+        <div class="row c4">
+          <div class="kpi"><div class="lab">Experience</div><div class="val">16+</div><div class="sub">Years on enterprise SAP and data programmes</div></div>
+          <div class="kpi ok"><div class="lab">Test cases governed</div><div class="val">4,071</div><div class="sub">Across 7 workstreams and 30 modules</div></div>
+          <div class="kpi ok"><div class="lab">Data Quality Index</div><div class="val">98.80%</div><div class="sub">Sustained against a 98.00% target</div></div>
+          <div class="kpi"><div class="lab">Reporting effort saved</div><div class="val">~95%</div><div class="sub">One day reduced to fifteen minutes</div></div>
+        </div>
+
+        <div class="row c3">
+          <div class="card" style="margin:0">
+            <div class="card-h"><div><h3>Test Management</h3><div class="sub">Discipline 01</div></div><span class="bdg pri">Active</span></div>
+            <div class="card-b">
+              <ul class="blist">
+                <li>Test strategy and master test plan</li>
+                <li>SIT / UAT execution and test directorship</li>
+                <li>Entry and exit criteria, readiness gates</li>
+                <li>Defect triage, RCA, SLA and escalation</li>
+                <li>Legacy integration and cutover readiness</li>
+              </ul>
+              <div style="margin-top:14px"><button class="btn gho" type="button" data-v="test">Open programme</button></div>
+            </div>
+          </div>
+          <div class="card" style="margin:0">
+            <div class="card-h"><div><h3>Transformation</h3><div class="sub">Discipline 02</div></div><span class="bdg">Delivered</span></div>
+            <div class="card-b">
+              <ul class="blist">
+                <li>Programme and portfolio governance</li>
+                <li>Steering Committee decision packs</li>
+                <li>As-is / to-be process architecture</li>
+                <li>Fit-to-standard and change control</li>
+                <li>Legacy disposition and contract sequencing</li>
+              </ul>
+              <div style="margin-top:14px"><button class="btn gho" type="button" data-v="trans">Open programme</button></div>
+            </div>
+          </div>
+          <div class="card" style="margin:0">
+            <div class="card-h"><div><h3>Data Governance</h3><div class="sub">Discipline 03</div></div><span class="bdg ok">Sustained</span></div>
+            <div class="card-b">
+              <ul class="blist">
+                <li>DG operating model, policy and standards</li>
+                <li>Data domains and stewardship enablement</li>
+                <li>Critical Data Elements and DQ rules</li>
+                <li>DQI measurement and remediation</li>
+                <li>Classification, PDPA, security-by-design</li>
+              </ul>
+              <div style="margin-top:14px"><button class="btn gho" type="button" data-v="data">Open programme</button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-h"><div><h3>Programme portfolio</h3><div class="sub">Signature engagements and their measured outcome</div></div></div>
+          <div class="card-b tight">
+            <div class="lrow">
+              <span class="ic"><svg><use href="#i-check"/></svg></span>
+              <div class="bd">
+                <div class="t">S/4HANA UAT readiness gate — a PTT Group petrochemical company</div>
+                <div class="d">UAT Test Director across seven workstreams. Built the Exit Analyzer that reports clean pass at 81.7% against a 95% gate and names the 483 tests still needed to close it.</div>
+              </div>
+              <div class="rt"><span class="bdg warn"><i class="dot"></i> Gate open</span></div>
+            </div>
+            <div class="lrow">
+              <span class="ic"><svg><use href="#i-flow"/></svg></span>
+              <div class="bd">
+                <div class="t">VMCS vendor consolidation — the group</div>
+                <div class="d">Eight vendor touchpoints, four registrations and three logins consolidated into two connected portals across three modules, sequenced against GEP and Ariba contract expiries.</div>
+              </div>
+              <div class="rt"><span class="bdg ok"><i class="dot"></i> Delivered</span></div>
+            </div>
+            <div class="lrow">
+              <span class="ic"><svg><use href="#i-db"/></svg></span>
+              <div class="bd">
+                <div class="t">Enterprise data governance foundation — a PTT Group petrochemical company</div>
+                <div class="d">39 data domains, three-tier policy architecture and the DQI framework — still reporting 98.80% across 132 rules and 5.99M records a cycle, years after the foundation programme closed.</div>
+              </div>
+              <div class="rt"><span class="bdg ok"><i class="dot"></i> In BAU</span></div>
+            </div>
+            <div class="lrow">
+              <span class="ic"><svg><use href="#i-grid"/></svg></span>
+              <div class="bd">
+                <div class="t">GEP Smart source-to-pay — PTT Exploration &amp; Production</div>
+                <div class="d">S/4HANA post-assessment consolidated into a prioritised roadmap, plus full-lifecycle delivery of GEP Smart including licence and vendor contract management.</div>
+              </div>
+              <div class="rt"><span class="bdg">Closed</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row c2-1">
+          <div class="card" style="margin:0">
+            <div class="card-h"><div><h3>AI-augmented delivery</h3><div class="sub">What separates this from a conventional PMO</div></div></div>
+            <div class="card-b">
+              <p style="font-size:13px; color:var(--txt-2); margin-bottom:14px">Traditional PMOs spend their capacity producing the report. I automate the production so that capacity goes into reading the signal — which is where risk is actually caught.</p>
+              <div class="pline" style="margin-bottom:11px"><span class="nm">Status reporting effort removed</span><span class="prog"><i class="ok" style="width:95%"></i></span><span class="pc">~95%</span></div>
+              <div class="pline" style="margin-bottom:11px"><span class="nm">Issue traceability, no manual follow-up</span><span class="prog"><i class="ok" style="width:98%"></i></span><span class="pc">98%</span></div>
+              <div class="pline"><span class="nm">PMO administrative overhead removed</span><span class="prog"><i style="width:50%"></i></span><span class="pc">~50%</span></div>
+              <p style="font-size:12.5px; color:var(--txt-3); margin-top:14px; line-height:1.55">Built with Jira REST API, Python, Power BI, Copilot, UiPath and agentic AI workflows. Delivery risk becomes visible 2–4 weeks earlier than a conventional reporting cycle allows.</p>
+            </div>
+          </div>
+          <div class="card" style="margin:0">
+            <div class="card-h"><h3>At a glance</h3></div>
+            <div class="card-b tight">
+              <div class="tblwrap"><table class="tbl"><tbody>
+                <tr><td>Location</td><td class="num" style="text-align:left"><b>Bangkok, Thailand</b></td></tr>
+                <tr><td>Working model</td><td style="text-align:left"><b>Hybrid</b> — WFH + on-site</td></tr>
+                <tr><td>Region</td><td style="text-align:left"><b>Thailand &amp; SEA</b></td></tr>
+                <tr><td>Languages</td><td style="text-align:left"><b>Thai</b> native · <b>English</b> professional</td></tr>
+                <tr><td>Education</td><td style="text-align:left"><b>M.Sc.</b> IT, KMITL<br><b>B.Sc.</b> Information Science, WU</td></tr>
+              </tbody></table></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════ TEST MANAGEMENT ════════ -->
+      <section class="view" id="v-test">
+        <div class="pagehead">
+          <h2>UAT Test Director — enterprise S/4HANA transformation</h2>
+          <p>A PTT Group petrochemical company · 2024 – present · Test Manager and PTP Legacy Integration Manager. Own the quality gate for a seven-workstream programme, and prove readiness to a Steering Committee that has to approve go-live on evidence rather than opinion.</p>
+        </div>
+
+        <div class="row c4">
+          <div class="kpi ok"><div class="lab">Overall UAT execution</div><div class="val">93.8%</div><div class="sub">3,818 of 4,071 total · excludes Not-Started</div></div>
+          <div class="kpi"><div class="lab">Completed test result</div><div class="val">84.9%</div><div class="sub">3,455 of 4,071 · pass, PWC, fail, cancelled, deferred</div></div>
+          <div class="kpi err"><div class="lab">Clean pass + PWC</div><div class="val">81.7%</div><div class="sub">Target ≥ 95% · gap 13.3 pp · 483 tests to close</div></div>
+          <div class="kpi warn"><div class="lab">Active S1–S3 defects</div><div class="val">111</div><div class="sub">94 SLA-breached · 3 S1 · 17 S2 · 91 S3</div></div>
+        </div>
+
+        <div class="tabs" role="tablist">
+          <button class="tab" role="tab" aria-selected="true" data-p="t-scope">Scope &amp; gate</button>
+          <button class="tab" role="tab" aria-selected="false" data-p="t-mod">Module progress</button>
+          <button class="tab" role="tab" aria-selected="false" data-p="t-built">What I built</button>
+          <button class="tab" role="tab" aria-selected="false" data-p="t-art">Artefacts</button>
+        </div>
+
+        <div class="pane on" id="t-scope">
+          <div class="row c2">
+            <div class="card" style="margin:0">
+              <div class="card-h"><h3>Scope governed</h3></div>
+              <div class="card-b tight"><div class="tblwrap"><table class="tbl"><tbody>
+                <tr><td style="width:38%">Workstreams</td><td><b>RTR · OTC · PTP · MTS · PPD · PTA · Cross-function</b><br>Seven streams under one test governance model</td></tr>
+                <tr><td>Test cases</td><td><b>4,071</b> tracked to the exit gate across <b>30 modules</b> and four test categories</td></tr>
+                <tr><td>Legacy applications</td><td><b>8</b> integrated and cutover-verified for Procure-to-Pay</td></tr>
+                <tr><td>Cadence</td><td>Daily burn-down and defect ageing · weekly checkpoint · Steering Committee decision pack</td></tr>
+                <tr><td>Toolchain</td><td>Jira / Xray · Tosca · Power BI · Python with the Jira REST API · UiPath · Copilot</td></tr>
+              </tbody></table></div></div>
+            </div>
+            <div class="card" style="margin:0">
+              <div class="card-h"><div><h3>Test execution status</h3><div class="sub">4,071 cases, colour-coded by outcome</div></div></div>
+              <div class="card-b tight"><div class="tblwrap"><table class="tbl">
+                <thead><tr><th>Outcome</th><th class="num">Cases</th><th class="num">Share</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="bdg ok"><i class="dot"></i> Pass</span></td><td class="num">2,533</td><td class="num">62.2%</td></tr>
+                  <tr><td><span class="bdg warn"><i class="dot"></i> Passed with condition</span></td><td class="num">426</td><td class="num">10.5%</td></tr>
+                  <tr><td><span class="bdg pri"><i class="dot"></i> In progress</span></td><td class="num">363</td><td class="num">8.9%</td></tr>
+                  <tr><td><span class="bdg"><i class="dot"></i> Not started</span></td><td class="num">253</td><td class="num">6.2%</td></tr>
+                  <tr><td><span class="bdg err"><i class="dot"></i> Failed</span></td><td class="num">18</td><td class="num">0.4%</td></tr>
+                  <tr><td><span class="bdg"><i class="dot"></i> Deferred</span></td><td class="num">30</td><td class="num">0.7%</td></tr>
+                  <tr><td><span class="bdg"><i class="dot"></i> Cancelled</span></td><td class="num">448</td><td class="num">11.0%</td></tr>
+                </tbody>
+              </table></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-h"><div><h3>Critical findings</h3><div class="sub">What the Steering Committee must know before deciding</div></div></div>
+            <div class="card-b tight">
+              <div class="lrow"><span class="ic" style="background:var(--err-w); color:var(--err)"><svg><use href="#i-check"/></svg></span><div class="bd"><div class="t">Clean pass + PWC only 81.7% against a 95% target</div><div class="d">2,959 of 3,623 in-scope tests pass cleanly — 483 more needed to reach the gate.</div></div><div class="rt"><span class="bdg err">Blocker</span></div></div>
+              <div class="lrow"><span class="ic" style="background:var(--err-w); color:var(--err)"><svg><use href="#i-check"/></svg></span><div class="bd"><div class="t">426 passed-with-condition still open</div><div class="d">PWC tests require CCB disposition, or they become Day-1 production defects.</div></div><div class="rt"><span class="bdg err">Blocker</span></div></div>
+              <div class="lrow"><span class="ic" style="background:var(--err-w); color:var(--err)"><svg><use href="#i-check"/></svg></span><div class="bd"><div class="t">94 of 111 defects SLA-breached</div><div class="d">85% of high-severity defects past resolution SLA — signals a stuck backlog.</div></div><div class="rt"><span class="bdg err">Blocker</span></div></div>
+              <div class="lrow"><span class="ic" style="background:var(--warn-w); color:var(--warn)"><svg><use href="#i-check"/></svg></span><div class="bd"><div class="t">18 failed tests unresolved</div><div class="d">Open failures blocking UAT sign-off — review with defect owners for a retest plan.</div></div><div class="rt"><span class="bdg warn">Watch</span></div></div>
+              <div class="lrow"><span class="ic" style="background:var(--warn-w); color:var(--warn)"><svg><use href="#i-check"/></svg></span><div class="bd"><div class="t">253 test cases not started</div><div class="d">Not-started backlog may delay exit — prioritise with module owners.</div></div><div class="rt"><span class="bdg warn">Watch</span></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pane" id="t-mod">
+          <div class="card">
+            <div class="card-h"><div><h3>Test case category summary</h3><div class="sub">Aggregated across all 30 modules</div></div></div>
+            <div class="card-b">
+              <div class="pline" style="margin-bottom:14px"><span class="nm"><b>Master data</b> · 927 total · 910 done · 17 left · 19 modules</span><span class="prog"><i class="ok" style="width:98.2%"></i></span><span class="pc">98.2%</span></div>
+              <div class="pline" style="margin-bottom:14px"><span class="nm"><b>Transactional</b> · 2,663 total · 1,982 done · 681 left · 23 modules</span><span class="prog"><i class="warn" style="width:74.4%"></i></span><span class="pc">74.4%</span></div>
+              <div class="pline" style="margin-bottom:14px"><span class="nm"><b>Month-end</b> · 326 total · 66 done · 260 left · 16 modules</span><span class="prog"><i class="err" style="width:20.2%"></i></span><span class="pc">20.2%</span></div>
+              <div class="pline"><span class="nm"><b>Report</b> · 155 total · 1 done · 154 left · 9 modules</span><span class="prog"><i class="err" style="width:0.6%"></i></span><span class="pc">0.6%</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-h"><div><h3>Module progress matrix</h3><div class="sub">Sample of the 30 modules tracked — risk-rated, drilling into remaining cases and active defects</div></div><div class="r"><span class="bdg warn">17 high risk</span></div></div>
+            <div class="card-b tight"><div class="tblwrap"><table class="tbl">
+              <thead><tr><th>Module</th><th>Master data</th><th>Transactional</th><th>Month-end</th><th class="num">Total</th><th class="num">Left</th><th class="num">% done</th><th>Risk</th></tr></thead>
+              <tbody>
+                <tr><td><b>AP</b></td><td><span class="bdg">n/a</span></td><td><span class="bdg err">51%</span></td><td><span class="bdg err">0%</span></td><td class="num">216</td><td class="num">107</td><td class="num">47.0%</td><td><span class="bdg err">High</span></td></tr>
+                <tr><td><b>SD</b></td><td><span class="bdg ok">100%</span></td><td><span class="bdg err">57%</span></td><td><span class="bdg">n/a</span></td><td class="num">530</td><td class="num">87</td><td class="num">80.0%</td><td><span class="bdg err">High</span></td></tr>
+                <tr><td><b>PROC</b></td><td><span class="bdg">n/a</span></td><td><span class="bdg warn">82%</span></td><td><span class="bdg">n/a</span></td><td class="num">256</td><td class="num">54</td><td class="num">76.8%</td><td><span class="bdg err">High</span></td></tr>
+                <tr><td><b>AM</b></td><td><span class="bdg ok">100%</span></td><td><span class="bdg warn">85%</span></td><td><span class="bdg">n/a</span></td><td class="num">602</td><td class="num">44</td><td class="num">92.2%</td><td><span class="bdg err">High</span></td></tr>
+                <tr><td><b>GL-TAX</b></td><td><span class="bdg err">0%</span></td><td><span class="bdg err">0%</span></td><td><span class="bdg err">0%</span></td><td class="num">43</td><td class="num">43</td><td class="num">0.0%</td><td><span class="bdg err">High</span></td></tr>
+                <tr><td><b>CO-CCA</b></td><td><span class="bdg ok">100%</span></td><td><span class="bdg">n/a</span></td><td><span class="bdg err">0%</span></td><td class="num">63</td><td class="num">39</td><td class="num">38.1%</td><td><span class="bdg err">High</span></td></tr>
+              </tbody>
+            </table></div></div>
+          </div>
+        </div>
+
+        <div class="pane" id="t-built">
+          <div class="card">
+            <div class="card-h"><div><h3>Instrumentation built for this cycle</h3><div class="sub">A test cycle this size cannot be reported by hand</div></div></div>
+            <div class="card-b tight">
+              <div class="lrow"><span class="ic"><svg><use href="#i-grid"/></svg></span><div class="bd"><div class="t">UAT Exit Analyzer</div><div class="d">A live readiness gate combining test progress and open-defect risk, with the critical findings a steering group needs before deciding.</div></div></div>
+              <div class="lrow"><span class="ic"><svg><use href="#i-grid"/></svg></span><div class="bd"><div class="t">Module progress matrix</div><div class="d">Per-module completion by test category, risk-rated, drilling into remaining cases and active defects.</div></div></div>
+              <div class="lrow"><span class="ic"><svg><use href="#i-grid"/></svg></span><div class="bd"><div class="t">Jira-connected dashboards</div><div class="d">Planned versus actual burn-down, per-workstream status and execution velocity, refreshed from the REST API.</div></div></div>
+              <div class="lrow"><span class="ic"><svg><use href="#i-grid"/></svg></span><div class="bd"><div class="t">SLA issue analytics</div><div class="d">Severity-banded ageing that surfaces breach before it becomes escalation.</div></div></div>
+              <div class="lrow"><span class="ic"><svg><use href="#i-mail"/></svg></span><div class="bd"><div class="t">Issue auto-notification</div><div class="d">Open issues routed to named owners over email or Teams, with no manual chasing.</div></div></div>
+            </div>
+          </div>
+          <div class="row c4">
+            <div class="kpi ok"><div class="lab">Reporting effort</div><div class="val">~95%</div><div class="sub">Removed — one day to fifteen minutes</div></div>
+            <div class="kpi ok"><div class="lab">PMO overhead</div><div class="val">~50%</div><div class="sub">Removed through automation</div></div>
+            <div class="kpi ok"><div class="lab">Issue traceability</div><div class="val">98%</div><div class="sub">With zero manual follow-up</div></div>
+            <div class="kpi"><div class="lab">Risk foresight</div><div class="val">2–4 wks</div><div class="sub">Earlier than conventional cycles</div></div>
+          </div>
+        </div>
+
+        <div class="pane" id="t-art">
+          <div class="gal" data-artgal="test"></div>
+        </div>
+      </section>
+
+      <!-- ════════ TRANSFORMATION ════════ -->
+      <section class="view" id="v-trans">
+        <div class="pagehead">
+          <h2>VMCS — eight vendor touchpoints into two connected portals</h2>
+          <p>Vendor Management &amp; Collaboration System, delivered for a PTT Group company. I owned the as-is / to-be end-to-end Procure-to-Pay architecture and the legacy disposition strategy behind it.</p>
+        </div>
+
+        <div class="row c4">
+          <div class="kpi err"><div class="lab">Before — systems</div><div class="val">8</div><div class="sub">Separate vendor touchpoints</div></div>
+          <div class="kpi err"><div class="lab">Before — registrations</div><div class="val">4</div><div class="sub">And three separate logins</div></div>
+          <div class="kpi ok"><div class="lab">After — portals</div><div class="val">2</div><div class="sub">One vendor identity, full lifecycle</div></div>
+          <div class="kpi ok"><div class="lab">After — modules</div><div class="val">3</div><div class="sub">Collaboration, management, operations</div></div>
+        </div>
+
+        <div class="tabs" role="tablist">
+          <button class="tab" role="tab" aria-selected="true" data-p="x-cons">Consolidation</button>
+          <button class="tab" role="tab" aria-selected="false" data-p="x-disp">Legacy disposition</button>
+          <button class="tab" role="tab" aria-selected="false" data-p="x-mod">Modules</button>
+          <button class="tab" role="tab" aria-selected="false" data-p="x-art">Artefacts</button>
+        </div>
+
+        <div class="pane on" id="x-cons">
+          <div class="row c2">
+            <div class="card" style="margin:0">
+              <div class="card-h"><div><h3>Before</h3><div class="sub">8 systems · 4 registrations · 3 logins · no single view of the vendor</div></div><span class="bdg err">Fragmented</span></div>
+              <div class="card-b tight"><div class="tblwrap"><table class="tbl"><tbody>
+                <tr><td>Paper vendor registration</td><td class="num"><span class="bdg err">Retire</span></td></tr>
+                <tr><td>GEP vendor registration</td><td class="num"><span class="bdg warn">Contract expiry Sep 2025</span></td></tr>
+                <tr><td>GCME vendor management</td><td class="num"><span class="bdg pri">Rebuild</span></td></tr>
+                <tr><td>Smart Work Request</td><td class="num"><span class="bdg pri">Rebuild</span></td></tr>
+                <tr><td>PO Tracking</td><td class="num"><span class="bdg pri">Rebuild</span></td></tr>
+                <tr><td>Shipping Management</td><td class="num"><span class="bdg pri">Rebuild</span></td></tr>
+                <tr><td>Smart Receiving</td><td class="num"><span class="bdg ok">Move to core</span></td></tr>
+                <tr><td>Payment Tracking</td><td class="num"><span class="bdg pri">Rebuild</span></td></tr>
+              </tbody></table></div></div>
+            </div>
+            <div class="card" style="margin:0">
+              <div class="card-h"><div><h3>After</h3><div class="sub">Two connected components, one vendor identity</div></div><span class="bdg ok">Consolidated</span></div>
+              <div class="card-b">
+                <h4 style="font-size:13.5px; margin-bottom:4px">Vendor Management Component</h4>
+                <div class="bdg" style="margin-bottom:9px">For internal users</div>
+                <ul class="blist" style="margin-bottom:18px">
+                  <li><b>Register and govern</b> — one registration, automatic duplication check, one approval workflow</li>
+                  <li><b>Manage performance</b> — profiling, categorisation and performance tracking</li>
+                  <li><b>Gain visibility</b> — vendor search, reporting and spend analytics</li>
+                </ul>
+                <h4 style="font-size:13.5px; margin-bottom:4px">Vendor Collaboration Component</h4>
+                <div class="bdg" style="margin-bottom:9px">For vendors</div>
+                <ul class="blist">
+                  <li><b>One login</b> — a single account for every vendor activity across the group</li>
+                  <li><b>Transact in one place</b> — RFQ, PO, shipping, receiving and invoicing</li>
+                  <li><b>Track in real time</b> — transaction and payment status, end to end</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pane" id="x-disp">
+          <div class="card">
+            <div class="card-h"><div><h3>Legacy disposition framework</h3><div class="sub">The decision that actually sets the plan — application by application</div></div></div>
+            <div class="card-b tight"><div class="tblwrap"><table class="tbl">
+              <thead><tr><th style="width:20%">Decision</th><th>Applied to</th></tr></thead>
+              <tbody>
+                <tr><td><span class="bdg ok">A · Move to core</span></td><td>Functionality that belongs in S/4HANA — <b>Smart Accrual, Smart Receiving, Bank Guarantee</b></td></tr>
+                <tr><td><span class="bdg pri">B · Re-integrate</span></td><td>Mature specialist tools retained and re-interfaced — <b>WMRO+, MMOS1 (XHQ), GMM, ITAS, LIMS</b></td></tr>
+                <tr><td><span class="bdg warn">C · Re-design</span></td><td>Fragmented vendor-facing systems rebuilt into VMCS — registration, PO tracking, work request, shipping, payment tracking</td></tr>
+                <tr><td><span class="bdg">D · Report only</span></td><td>Reporting consumers moved onto the data platform rather than rebuilt</td></tr>
+                <tr><td><span class="bdg err">Retire</span></td><td>Redundant systems decommissioned with the process they supported</td></tr>
+              </tbody>
+            </table></div></div>
+          </div>
+          <div class="row c2">
+            <div class="card" style="margin:0">
+              <div class="card-h"><h3>End-to-end process scope</h3></div>
+              <div class="card-b"><ul class="blist">
+                <li>① Purchase requisition process</li>
+                <li>② PO sourcing / quotation</li>
+                <li>③ PO contract management</li>
+                <li>④ PO purchase order management</li>
+                <li>⑤ Goods receipt referencing purchase order</li>
+                <li>⑥ AP invoice verification</li>
+                <li>⑦ AP payment</li>
+                <li>⑧ PO vendor management</li>
+              </ul></div>
+            </div>
+            <div class="card" style="margin:0">
+              <div class="card-h"><h3>Sequenced against contract reality</h3></div>
+              <div class="card-b tight"><div class="tblwrap"><table class="tbl"><tbody>
+                <tr><td>GEP contract expiry</td><td class="num"><b>Sep 2025</b></td></tr>
+                <tr><td>Ariba downstream contract expiry</td><td class="num"><b>Aug 2026</b></td></tr>
+                <tr><td>Upstream demand</td><td style="text-align:left">PM · PP · CS · PS · IM/MRP · SD</td></tr>
+                <tr><td>Downstream integration</td><td style="text-align:left">QM · WM · Treasury · Asset Accounting · Budget</td></tr>
+              </tbody></table></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pane" id="x-mod">
+          <div class="row c3">
+            <div class="card" style="margin:0">
+              <div class="card-h"><div><h3>Module 1</h3><div class="sub">Vendor Collaboration Portal</div></div></div>
+              <div class="card-b tight"><div class="tblwrap"><table class="tbl"><tbody>
+                <tr><td>Discovery</td><td>Partner profile, RFP/RFI, workflow status</td></tr>
+                <tr><td>Account</td><td>New account request, self password, management</td></tr>
+                <tr><td>Registration</td><td>Credit scoring, documentation, bank guarantee</td></tr>
+                <tr><td>Collaboration</td><td>Shipping, PO, invoice, delivery, payment tracking</td></tr>
+                <tr><td>Compliance</td><td>PDPA consent, RBAC, event and audit log</td></tr>
+              </tbody></table></div></div>
+            </div>
+            <div class="card" style="margin:0">
+              <div class="card-h"><div><h3>Module 2</h3><div class="sub">Vendor Management Portal</div></div></div>
+              <div class="card-b tight"><div class="tblwrap"><table class="tbl"><tbody>
+                <tr><td>AVL</td><td>AVL and non-AVL search, workflow, vendor status</td></tr>
+                <tr><td>Qualification</td><td>Credit scoring, criticism, categorisation</td></tr>
+                <tr><td>On/off-boarding</td><td>Request approval, dashboard and report</td></tr>
+                <tr><td>Performance</td><td>Per-PO and annual evaluation, report</td></tr>
+                <tr><td>Risk &amp; access</td><td>Business record, PDPA assessment, RBAC</td></tr>
+              </tbody></table></div></div>
+            </div>
+            <div class="card" style="margin:0">
+              <div class="card-h"><div><h3>Module 3</h3><div class="sub">Procurement Operation Support</div></div></div>
+              <div class="card-b tight"><div class="tblwrap"><table class="tbl"><tbody>
+                <tr><td>Work request</td><td>Creation, quotation validation, approval, mapping</td></tr>
+                <tr><td>PO tracking</td><td>Search, acknowledge status, dashboard, follow-up</td></tr>
+                <tr><td>Delivery</td><td>Booking, approval, acknowledge, alerts, report</td></tr>
+                <tr><td>Receiving</td><td>Commitment setup, goods receipt, penalty, return</td></tr>
+                <tr><td>Payment</td><td>Vendor bill search, paid bills, action log</td></tr>
+              </tbody></table></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pane" id="x-art">
+          <div class="gal" data-artgal="dt"></div>
+        </div>
+      </section>
+
+      <!-- ════════ DATA GOVERNANCE ════════ -->
+      <section class="view" id="v-data">
+        <div class="pagehead">
+          <h2>Enterprise data governance — foundation into sustained BAU</h2>
+          <p>A PTT Group petrochemical company · 2019 – 2023 · Data Governance &amp; Management Lead. Six workstreams driven in parallel — organisation, policy, data product delivery, change management, technology, and DG adoption for SAP data sources.</p>
+        </div>
+
+        <div class="row c4">
+          <div class="kpi ok"><div class="lab">Data Quality Index</div><div class="val">98.80%</div><div class="sub">Against a 98.00% target</div></div>
+          <div class="kpi"><div class="lab">Business rules</div><div class="val">132</div><div class="sub">Executed across the estate</div></div>
+          <div class="kpi"><div class="lab">Records per cycle</div><div class="val">5.99M</div><div class="sub">5,988,703 processed monthly</div></div>
+          <div class="kpi"><div class="lab">Data domains</div><div class="val">39</div><div class="sub">Mapped and PDPA-classified</div></div>
+        </div>
+
+        <div class="tabs" role="tablist">
+          <button class="tab" role="tab" aria-selected="true" data-p="d-qual">Quality</button>
+          <button class="tab" role="tab" aria-selected="false" data-p="d-road">Roadmap</button>
+          <button class="tab" role="tab" aria-selected="false" data-p="d-gov">Governance</button>
+          <button class="tab" role="tab" aria-selected="false" data-p="d-art">Artefacts</button>
+        </div>
+
+        <div class="pane on" id="d-qual">
+          <div class="row c2">
+            <div class="card" style="margin:0">
+              <div class="card-h"><div><h3>Quality by dimension</h3><div class="sub">Bars drawn on a 90–100% scale so differences at the top stay visible</div></div></div>
+              <div class="card-b">
+                <div class="pline" style="margin-bottom:13px"><span class="nm">Completeness</span><span class="prog"><i class="ok" style="width:99%"></i></span><span class="pc">99.90%</span></div>
+                <div class="pline" style="margin-bottom:13px"><span class="nm">Accuracy</span><span class="prog"><i class="ok" style="width:93.7%"></i></span><span class="pc">99.37%</span></div>
+                <div class="pline" style="margin-bottom:13px"><span class="nm">Uniqueness</span><span class="prog"><i class="ok" style="width:86.4%"></i></span><span class="pc">98.64%</span></div>
+                <div class="pline" style="margin-bottom:13px"><span class="nm">Validity</span><span class="prog"><i class="warn" style="width:73.3%"></i></span><span class="pc">97.33%</span></div>
+                <div class="pline"><span class="nm">Reliability</span><span class="prog"><i class="warn" style="width:54.2%"></i></span><span class="pc">95.42%</span></div>
+                <p style="font-size:12px; color:var(--txt-3); margin-top:15px; line-height:1.55">Composite index <b style="color:var(--txt)">98.80%</b> across 132 business rules and 5,988,703 records per measurement cycle. Scale minimum 90%, target marker at 98.00%.</p>
+              </div>
+            </div>
+            <div class="card" style="margin:0">
+              <div class="card-h"><div><h3>Quality by data domain</h3><div class="sub">Achieved DQI and the rule count behind each score</div></div></div>
+              <div class="card-b tight"><div class="tblwrap"><table class="tbl">
+                <thead><tr><th>Data domain</th><th class="num">Rules</th><th class="num">DQI</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td>Material spare-part</td><td class="num">25</td><td class="num"><b>98.38%</b></td><td><span class="bdg ok">On target</span></td></tr>
+                  <tr><td>Lab operation</td><td class="num">41</td><td class="num"><b>97.76%</b></td><td><span class="bdg warn">Near</span></td></tr>
+                  <tr><td>Accounting data</td><td class="num">16</td><td class="num"><b>96.57%</b></td><td><span class="bdg warn">Near</span></td></tr>
+                  <tr><td>Equipment &amp; plant maintenance</td><td class="num">67</td><td class="num"><b>95.96%</b></td><td><span class="bdg warn">Near</span></td></tr>
+                  <tr><td>Vendor</td><td class="num">26</td><td class="num"><b>95.93%</b></td><td><span class="bdg warn">Near</span></td></tr>
+                  <tr><td>Raw material</td><td class="num">67</td><td class="num"><b>94.89%</b></td><td><span class="bdg err">Below</span></td></tr>
+                  <tr><td>Customer &amp; partners</td><td class="num">10</td><td class="num"><b>90.44%</b></td><td><span class="bdg err">Below</span></td></tr>
+                </tbody>
+              </table></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pane" id="d-road">
+          <div class="card">
+            <div class="card-h"><div><h3>Adoption sequence</h3><div class="sub">Foundation through to sustained business-as-usual operation</div></div></div>
+            <div class="card-b">
+              <div class="tline">
+                <div class="tev"><div class="yr">2020</div><div class="ti">Develop foundation</div>
+                  <ul class="blist" style="margin-top:9px"><li>DG organisation and operating model established</li><li>Policy, standards, procedures and templates authored</li><li>Metrics and measurement formulas defined</li><li>Data management tooling assessed</li><li><b>Data Quality Index established</b></li></ul></div>
+                <div class="tev"><div class="yr">2021</div><div class="ti">Adopt critical data domains</div>
+                  <ul class="blist" style="margin-top:9px"><li>Data stewardship engagement launched</li><li>DG policy announced, deployment process live</li><li>CDE, DQ rules, metadata and access established</li><li>Data platform implemented</li><li><b>Over 40% SAP master data covered</b></li></ul></div>
+                <div class="tev"><div class="yr">2022</div><div class="ti">Scale out adoption</div>
+                  <ul class="blist" style="margin-top:9px"><li>Stewardship sprint 1 — 6 data domains announced</li><li>Standards and procedures announced group-wide</li><li>DQ rules implemented on tooling</li><li>Online training deployed organisation-wide</li><li><b>Over 60% accumulated coverage</b></li></ul></div>
+                <div class="tev now"><div class="yr">2023 onward</div><div class="ti">Sustain operation</div>
+                  <ul class="blist" style="margin-top:9px"><li>BAU operational support in place</li><li>DG and data integration standardisation</li><li>22 data domains accumulated, prioritised by use case</li><li>Stewardship sprint 2 — 16 further domains</li><li><b>Over 80% accumulated coverage</b></li></ul></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pane" id="d-gov">
+          <div class="row c2">
+            <div class="card" style="margin:0">
+              <div class="card-h"><h3>Policy architecture authored</h3></div>
+              <div class="card-b tight"><div class="tblwrap"><table class="tbl"><tbody>
+                <tr><td style="width:32%">Tier 1 — DG policy</td><td>Governance charter · role identification · certification · council and working-group management · exception and waiver process · DG standards</td></tr>
+                <tr><td>Tier 2 — Supporting</td><td>Content handling · metadata guideline · data security · data quality · reference and master data · classification · sharing agreement · discovery profiling</td></tr>
+                <tr><td>Tier 3 — Procedures</td><td>CDE identification · DQ rule definition · data quality management · data issue management</td></tr>
+              </tbody></table></div></div>
+            </div>
+            <div class="card" style="margin:0">
+              <div class="card-h"><div><h3>Operating model options</h3><div class="sub">Four models put to the executive with trade-offs</div></div></div>
+              <div class="card-b tight"><div class="tblwrap"><table class="tbl"><tbody>
+                <tr><td style="width:30%"><b>Distributed</b></td><td>Deep business know-how, but high processing time</td></tr>
+                <tr><td><b>Centralised</b></td><td>Specialised capability, but hard to facilitate across business units</td></tr>
+                <tr><td><b>Hybrid</b></td><td>Centralised for cross-BU data areas, mixed and adjusted to need — but role and responsibility harder to standardise</td></tr>
+                <tr><td><b>Outsourced</b></td><td>Quick start-up, but the capability stays with the consultant</td></tr>
+              </tbody></table></div></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-h"><div><h3>Data quality management process</h3><div class="sub">Documented end to end across six roles</div></div></div>
+            <div class="card-b">
+              <div class="row c3" style="margin:0">
+                <div><div class="bdg pri" style="margin-bottom:8px">Detect</div><ul class="blist"><li><b>DQ Analyst</b> runs the monthly report and raises issues</li><li><b>DG Officer</b> routes the request to the technical steward via IT-SR</li></ul></div>
+                <div><div class="bdg pri" style="margin-bottom:8px">Remediate</div><ul class="blist"><li><b>Data Custodian</b> reviews the DQ rule and supervises implementation</li><li><b>DQ Developer</b> implements the script and generates the report</li></ul></div>
+                <div><div class="bdg pri" style="margin-bottom:8px">Approve</div><ul class="blist"><li><b>Business Data Steward</b> reviews and approves the implemented rule</li><li><b>Data Owner</b> signs off, or returns it to remediation</li></ul></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pane" id="d-art">
+          <div class="gal" data-artgal="dg"></div>
+        </div>
+      </section>
+
+      <!-- ════════ DELIVERABLES ════════ -->
+      <section class="view" id="v-gal">
+        <div class="pagehead">
+          <h2>Deliverables library</h2>
+          <p>Twenty-six artefacts from the three programmes — dashboards built, architectures owned, governance material authored. Select any tile to view it full size.</p>
+        </div>
+        <div class="filters">
+          <button class="fbtn" type="button" data-f="all" aria-pressed="true">All</button>
+          <button class="fbtn" type="button" data-f="test" aria-pressed="false">Test management</button>
+          <button class="fbtn" type="button" data-f="dt" aria-pressed="false">Transformation</button>
+          <button class="fbtn" type="button" data-f="dg" aria-pressed="false">Data governance</button>
+          <span class="bdg" id="galcount" style="margin-left:auto">26 items</span>
+        </div>
+        <div class="gal" id="mastergal"></div>
+      </section>
+
+      <!-- ════════ CV ════════ -->
+      <section class="view" id="v-cv">
+        <div class="pagehead">
+          <h2>Curriculum vitae</h2>
+          <p>The two-page CV as issued. Select a page to view it full size. Client-identifying labels inside the deliverable screenshots on page two have been masked — the same treatment applied across the deliverables library.</p>
+        </div>
+        <div class="row c4">
+          <div class="kpi"><div class="lab">Current role</div><div class="val" style="font-size:18px; line-height:1.3">S/4HANA<br>Test Manager</div><div class="sub">UAT Test Director · PTP legacy integration</div></div>
+          <div class="kpi ok"><div class="lab">Experience</div><div class="val">16+</div><div class="sub">Years on enterprise SAP and data programmes</div></div>
+          <div class="kpi"><div class="lab">Education</div><div class="val" style="font-size:18px; line-height:1.3">M.Sc. IT<br>B.Sc. IS</div><div class="sub">KMITL · Walailak University</div></div>
+          <div class="kpi ok"><div class="lab">Availability</div><div class="val" style="font-size:18px; line-height:1.3">Hybrid<br>Thailand &amp; SEA</div><div class="sub">Remote delivery with on-site presence</div></div>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px"><a class="btn" href="docs/Resume_Pitsamorn_Ingkavara_2026.pdf" download><svg><use href="#i-dl"/></svg> Download CV (PDF)</a><a class="btn gho" href="docs/Resume_Pitsamorn_Ingkavara_2026.docx" download><svg><use href="#i-dl"/></svg> Word version</a><a class="btn gho" href="docs/Portfolio_Pitsamorn_Ingkavara_2026.pdf" download><svg><use href="#i-dl"/></svg> Portfolio deck</a></div>
+        <div class="cvwrap">
+          <button class="cvpage" type="button" data-cv="cv-1" data-title="Curriculum vitae — page 1" data-cap="Profile, work experience, education, core competencies, contact and languages.">
+            <span class="lbl"><svg width="15" height="15" stroke="currentColor" fill="none" stroke-width="1.8"><use href="#i-doc"/></svg> Page 1 — Profile &amp; experience <span>Click to enlarge</span></span>
+            <img src="gal/cv-1.jpg" alt="Curriculum vitae page one — profile, work experience, education and core competencies" loading="lazy">
+          </button>
+          <button class="cvpage" type="button" data-cv="cv-2" data-title="Curriculum vitae — page 2" data-cap="Differentiator statement and examples of skill and deliverables. Client-identifying labels inside the screenshots are masked.">
+            <span class="lbl"><svg width="15" height="15" stroke="currentColor" fill="none" stroke-width="1.8"><use href="#i-doc"/></svg> Page 2 — Differentiator &amp; deliverables <span>Click to enlarge</span></span>
+            <img src="gal/cv-2.jpg" alt="Curriculum vitae page two — differentiator statement and deliverable examples" loading="lazy">
+          </button>
+        </div>
+      </section>
+
+      <!-- ════════ PROFILE ════════ -->
+      <section class="view" id="v-prof">
+        <div class="pagehead">
+          <h2>Pitsamorn Ingkavara · พิศสมร อิงควระ</h2>
+          <p>Sixteen years on one of Thailand's largest SAP estates. Open to hybrid engagements combining remote delivery with on-site programme presence, across Thailand and South-East Asia.</p>
+        </div>
+
+        <div class="row c2-1">
+          <div class="card" style="margin:0">
+            <div class="card-h"><h3>Experience</h3></div>
+            <div class="card-b">
+              <div class="tline">
+                <div class="tev now"><div class="yr">2024 — present</div><div class="ti">PTT Global Chemical PCL</div><div class="ro">S/4HANA Test Manager (UAT Test Director) · PTP Legacy Integration Manager</div><div class="de">Seven functional workstreams, 4,071 test cases across 30 modules, eight legacy applications integrated and cutover-verified for Procure-to-Pay, with Jira-connected reporting automation and Steering Committee checkpoint reporting.</div><div class="tg"><span class="bdg">Test management</span><span class="bdg">Legacy integration</span><span class="bdg">Automation</span></div></div>
+                <div class="tev"><div class="yr">2023 — 2025</div><div class="ti">Thai Oil PCL</div><div class="ro">Data Governance &amp; Security Lead / PMO</div><div class="de">Data classification, content-handling standards and governance-by-design controls embedded into the delivery lifecycle, so data quality, access control and privacy were designed in at solution stage rather than remediated after go-live.</div><div class="tg"><span class="bdg">Data governance</span><span class="bdg">Security</span><span class="bdg">PMO</span></div></div>
+                <div class="tev"><div class="yr">2023</div><div class="ti">PTT Exploration &amp; Production PCL</div><div class="ro">S/4HANA PMO Lead · Project Manager, GEP Smart</div><div class="de">S/4HANA post-assessment consolidated into a prioritised transformation roadmap for executive decision, and full-lifecycle delivery of the GEP Smart source-to-pay implementation including licence and vendor contract management.</div><div class="tg"><span class="bdg">Programme</span><span class="bdg">PMO</span><span class="bdg">Source-to-pay</span></div></div>
+                <div class="tev"><div class="yr">2019 — 2023</div><div class="ti">PTT Global Chemical PCL</div><div class="ro">Data Governance &amp; Management Lead</div><div class="de">Enterprise DG operating model, three-tier policy architecture, 39 data domains, the Data Quality Index framework, stewardship enablement across concurrent digital initiatives, and delivery of the data platform and data-product layer through to API-based data services.</div><div class="tg"><span class="bdg">Data governance</span><span class="bdg">Data platform</span><span class="bdg">Change management</span></div></div>
+                <div class="tev"><div class="yr">2009 — 2019</div><div class="ti">PTT Digital Solution Co., Ltd.</div><div class="ro">SAP &amp; Legacy Project Manager</div><div class="de">SAP ERP (ECC / S/4HANA) and SAP Ariba implementations across PTT Group companies — GC, Thai Oil, HMC and IRPC — specialising in Procure-to-Pay and Source-to-Contract integration, from fit-to-standard through SIT/UAT, go-live and hypercare.</div><div class="tg"><span class="bdg">SAP delivery</span><span class="bdg">Ariba</span><span class="bdg">P2P / S2C</span></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="card">
+              <div class="card-h"><h3>Contact</h3></div>
+              <div class="card-b tight"><div class="tblwrap"><table class="tbl"><tbody>
+                <tr><td>Email</td><td><a href="mailto:pingkavara@gmail.com" style="color:var(--primary)">pingkavara@gmail.com</a></td></tr>
+                <tr><td>Phone</td><td><b>+66 86 495 6993</b></td></tr>
+                <tr><td>LinkedIn</td><td><a href="https://www.linkedin.com/in/pitsamorn-ingkavara" target="_blank" rel="noopener" style="color:var(--primary)">pitsamorn-ingkavara</a></td></tr>
+                <tr><td>Based</td><td><b>Bangkok, Thailand</b></td></tr>
+              </tbody></table></div></div>
+            </div>
+            <div class="card">
+              <div class="card-h"><h3>Education</h3></div>
+              <div class="card-b">
+                <div style="margin-bottom:14px"><div style="font-size:13.5px; font-weight:600">M.Sc. Information Technology</div><div style="font-size:12.5px; color:var(--txt-2)">Information Systems · KMITL · 2009–2011</div></div>
+                <div><div style="font-size:13.5px; font-weight:600">B.Sc. Information Science</div><div style="font-size:12.5px; color:var(--txt-2)">Management Information Systems · Walailak University · 2004–2007</div></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-h"><h3>Technology</h3></div>
+              <div class="card-b tight"><div class="tblwrap"><table class="tbl"><tbody>
+                <tr><td style="width:28%">SAP</td><td>S/4HANA, ECC, Ariba, GEP Smart, IS-OIL; MM, PM, PS, SD, PP, QM, FI-AA</td></tr>
+                <tr><td>Testing</td><td>Jira / Xray, Tosca, SIT &amp; UAT management, defect and RCA workflows</td></tr>
+                <tr><td>Data</td><td>Informatica, catalog and lineage tooling, Power BI, Tableau, SQL, Python</td></tr>
+                <tr><td>Delivery</td><td>MS Project, Jira, Monday.com, Notion, Agile/Scrum, Waterfall, Copilot, UiPath</td></tr>
+              </tbody></table></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- ══ MODAL ══ -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mtitle">
+  <div class="mbox">
+    <div class="mh">
+      <div style="flex:1"><h3 id="mtitle">&nbsp;</h3><p id="mcap"></p></div>
+      <button class="mx" id="mclose" type="button" aria-label="Close">✕</button>
+    </div>
+    <div class="mb"><img id="mimg" src="" alt=""></div>
+    <div class="mf">
+      <button class="btn gho" id="mprev" type="button">‹ Previous</button>
+      <button class="btn gho" id="mnext" type="button">Next ›</button>
+      <span class="pg" id="mpg"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+var G = [
+ {f:"uat-exit-analyzer", t:"test", ti:"UAT Exit Analyzer — executive summary", c:"Readiness measured against the exit gate: 93.8% execution, 84.9% completed, 81.7% clean pass versus a 95% target, and 111 active S1–S3 defects with 94 past SLA."},
+ {f:"module-progress-matrix", t:"test", ti:"Module progress matrix", c:"Per-module progress across master data, transactional, month-end and report categories — 30 modules, colour-coded, with S1–S4 defect counts and a risk rating on every row."},
+ {f:"test-reporting", t:"test", ti:"Automated test progress reporting", c:"The Jira REST API connector and the generated Test Progress Report — execution velocity, burn-down, pass rate, defect counts and a status breakdown drilling to individual issues."},
+ {f:"test-uat-control", t:"test", ti:"UAT control sheet and burn-down", c:"Overall UAT test-case position across the seven workstreams, the health-check gauge, per-workstream breakdown, and the baseline-versus-actual progress curve."},
+ {f:"test-issue-analytics", t:"test", ti:"Issue analytics against SLA", c:"Issue processing-time analytics with severity-banded SLA baselines showing active versus breached counts, overdue status and the ageing that drives escalation."},
+ {f:"jira-workspace", t:"test", ti:"Jira test management workspace", c:"The working Jira estate — UAT issue management, progress updates, SIT legacy test control sheets and issue logs, organised as linked spaces per workstream."},
+ {f:"vmcs-consolidation", t:"dt", ti:"From 8 touchpoints into 2 portals", c:"The consolidation case as presented to stakeholders: eight vendor touchpoints, four registrations and three logins reduced to two connected components."},
+ {f:"ptp-asis", t:"dt", ti:"As-is Procure-to-Pay architecture", c:"The as-is estate — eight core process steps with every legacy and satellite system mapped onto them, each application tagged with its disposition."},
+ {f:"ptp-tobe", t:"dt", ti:"To-be Procure-to-Pay architecture", c:"The target state after consolidation — VMCS replacing fragmented vendor-facing systems, retained tools re-interfaced, retirements executed."},
+ {f:"vmcs-ui", t:"dt", ti:"Delivered vendor collaboration portal", c:"The vendor-facing landing experience — profile submission, vendor news, and a live to-do list across registration, PO tracking, payment and delivery confirmation."},
+ {f:"vendor-onboarding", t:"dt", ti:"Vendor registration and onboarding journey", c:"The redesigned five-stage vendor journey — verify, register, assess, approve, onboard — with the benefits framed for the business."},
+ {f:"vmcs-module1", t:"dt", ti:"Module 1 — Vendor Collaboration Portal scope", c:"End-to-end functional scope, each feature flagged mandatory or optional, reusable or new build, with integration points marked."},
+ {f:"vmcs-module2", t:"dt", ti:"Module 2 — Vendor Management Portal scope", c:"Procurement-facing scope covering AVL identification, qualification, on/off-boarding, performance evaluation and vendor risk management."},
+ {f:"vmcs-module3", t:"dt", ti:"Module 3 — Procurement Operation Support scope", c:"Operational scope across work request, PO tracking, delivery confirmation, smart receiving, shipping management and payment tracking."},
+ {f:"vmcs-features", t:"dt", ti:"VMCS core service catalogue", c:"The feature-level service definition handed to the build team — registration, extension, profile update, evaluation, risk, AVL search and procurement operations."},
+ {f:"dq-dashboard", t:"dg", ti:"Data quality control dashboard", c:"Composite Data Quality Index at 98.80% against a 98.00% target, twelve-month trend, per-dimension gauges, and a business view drilling to record errors."},
+ {f:"dg-39-domains", t:"dg", ti:"39 enterprise data domains", c:"Every data domain placed on the value chain and support functions, colour-coded by adoption year and flagged for PDPA personal or sensitive personal data."},
+ {f:"dq-value-chain", t:"dg", ti:"Data quality results by domain", c:"Achieved DQI overlaid on the value chain with the rule count behind each score, from material spare-part at 98.38% down to customer and partners at 90.44%."},
+ {f:"dg-roadmap", t:"dg", ti:"Four-year data governance roadmap", c:"The adoption plan across six parallel workstreams, with completion state marked phase by phase from 2020 foundation to sustained BAU."},
+ {f:"dq-process", t:"dg", ti:"Data quality management process", c:"The controlled process documented across six roles, from monthly report through rule implementation, steward review and data owner sign-off."},
+ {f:"dg-framework", t:"dg", ti:"Policy architecture", c:"The three-tier policy set authored for the organisation: governing DG policy, supporting policies, and the procedures beneath them."},
+ {f:"dg-operating-model", t:"dg", ti:"Operating model options", c:"Four operating models put to the executive with trade-offs and organisation structures — distributed, centralised, hybrid and outsourced."},
+ {f:"dg-capability-stack", t:"dg", ti:"Data platform capability stack", c:"From business use cases down through data service, the data management execution layer and the governance framework, tied to four adoption goals."},
+ {f:"dg-data-product", t:"dg", ti:"Data product implementation model", c:"How a use-case requirement becomes a consumable data product — from systems of record through integration to consumption archetypes."},
+ {f:"dg-service-utilization", t:"dg", ti:"Consumption strategy", c:"Consumption options assessed against complexity and user group, supporting the decision to focus delivery on API services."},
+ {f:"dg-smart-operation", t:"dg", ti:"Executive framing for the programme", c:"Five approaches each tied to a named outcome, under a single data-driven smart operation objective for a refinery and petrochemical business."}
+];
+var TR = {test:"Test management", dt:"Transformation", dg:"Data governance"};
+var VT = {dash:"Dashboard", test:"Test Management", trans:"Transformation", data:"Data Governance", gal:"Deliverables", cv:"Curriculum Vitae", prof:"Profile"};
+
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+/* ── build galleries ── */
+function tileHtml(m){
+  return '<button class="tile" type="button" data-f="'+m.f+'" data-cat="'+m.t+'">'+
+    '<span class="im"><img src="gal/'+m.f+'-t.jpg" alt="'+esc(m.ti)+'" loading="lazy"></span>'+
+    '<span class="mt"><span class="t">'+esc(m.ti)+'</span><span class="b"><span class="bdg pri">'+TR[m.t]+'</span></span></span>'+
+  '</button>';
+}
+document.getElementById('mastergal').innerHTML = G.map(tileHtml).join('');
+Array.prototype.forEach.call(document.querySelectorAll('[data-artgal]'), function(el){
+  var cat = el.dataset.artgal;
+  el.innerHTML = G.filter(function(m){ return m.t === cat; }).map(tileHtml).join('');
+});
+
+/* ── modal viewer ── */
+var modal=document.getElementById('modal'), mimg=document.getElementById('mimg'),
+    mtitle=document.getElementById('mtitle'), mcap=document.getElementById('mcap'), mpg=document.getElementById('mpg');
+var seq=[], idx=0, opener=null;
+
+function render(){
+  var m=seq[idx]; if(!m) return;
+  mimg.src='gal/'+m.f+'.jpg'; mimg.alt=m.ti;
+  mtitle.textContent=m.ti; mcap.textContent=m.c;
+  mpg.textContent=(idx+1)+' / '+seq.length;
+}
+function open(tile){
+  var scope=tile.closest('.gal');
+  var tiles=Array.prototype.filter.call(scope.querySelectorAll('.tile'), function(t){ return !t.hidden; });
+  seq=tiles.map(function(t){
+    for(var k=0;k<G.length;k++){ if(G[k].f===t.dataset.f) return G[k]; }
+    return null;
+  }).filter(Boolean);
+  idx=Math.max(0, tiles.indexOf(tile));
+  opener=tile;
+  render();
+  modal.classList.add('on');
+  document.getElementById('mclose').focus();
+}
+function close(){
+  modal.classList.remove('on'); mimg.src='';
+  if(opener){ opener.focus(); opener=null; }
+}
+function step(d){ if(seq.length){ idx=(idx+d+seq.length)%seq.length; render(); } }
+
+document.addEventListener('click', function(e){
+  var cv=e.target.closest ? e.target.closest('[data-cv]') : null;
+  if(cv){
+    seq=[{f:cv.dataset.cv, ti:cv.dataset.title, c:cv.dataset.cap, t:'cv'},
+         {f:(cv.dataset.cv==='cv-1'?'cv-2':'cv-1'),
+          ti:(cv.dataset.cv==='cv-1'?'Curriculum vitae — page 2':'Curriculum vitae — page 1'),
+          c:(cv.dataset.cv==='cv-1'?'Differentiator statement and deliverable examples.':'Profile, work experience, education and core competencies.'), t:'cv'}];
+    idx=0; opener=cv; render(); modal.classList.add('on'); document.getElementById('mclose').focus();
+    return;
+  }
+  var t=e.target.closest ? e.target.closest('.tile') : null;
+  if(t){ open(t); return; }
+  if(e.target.closest && e.target.closest('#mclose')){ close(); return; }
+  if(e.target.closest && e.target.closest('#mprev')){ step(-1); return; }
+  if(e.target.closest && e.target.closest('#mnext')){ step(1); return; }
+  if(e.target===modal){ close(); return; }
+});
+document.addEventListener('keydown', function(e){
+  if(!modal.classList.contains('on')) return;
+  if(e.key==='Escape') close();
+  else if(e.key==='ArrowLeft') step(-1);
+  else if(e.key==='ArrowRight') step(1);
+});
+
+/* ── gallery filter ── */
+var fcount=document.getElementById('galcount');
+Array.prototype.forEach.call(document.querySelectorAll('.fbtn'), function(b){
+  b.addEventListener('click', function(){
+    var f=b.dataset.f, n=0;
+    Array.prototype.forEach.call(document.querySelectorAll('.fbtn'), function(o){ o.setAttribute('aria-pressed', String(o===b)); });
+    Array.prototype.forEach.call(document.querySelectorAll('#mastergal .tile'), function(t){
+      var on = (f==='all' || t.dataset.cat===f);
+      t.hidden = !on; if(on) n++;
+    });
+    fcount.textContent = n + (n===1 ? ' item' : ' items');
+  });
+});
+
+/* ── tabs ── */
+Array.prototype.forEach.call(document.querySelectorAll('.tab'), function(tab){
+  tab.addEventListener('click', function(){
+    var group=tab.parentElement;
+    Array.prototype.forEach.call(group.querySelectorAll('.tab'), function(o){ o.setAttribute('aria-selected', String(o===tab)); });
+    var view=tab.closest('.view');
+    Array.prototype.forEach.call(view.querySelectorAll('.pane'), function(p){ p.classList.toggle('on', p.id===tab.dataset.p); });
+  });
+});
+
+/* ── navigation ── */
+var side=document.getElementById('side'), scrim=document.getElementById('scrim'), content=document.getElementById('content');
+function nav(v){
+  Array.prototype.forEach.call(document.querySelectorAll('.view'), function(s){ s.classList.toggle('on', s.id==='v-'+v); });
+  Array.prototype.forEach.call(document.querySelectorAll('.navitem'), function(b){
+    if(b.dataset.v===v) b.setAttribute('aria-current','true'); else b.removeAttribute('aria-current');
+  });
+  document.getElementById('ptitle').textContent = VT[v] || '';
+  document.getElementById('crumb').textContent = VT[v] || '';
+  content.scrollTop = 0;
+  side.classList.remove('open'); scrim.classList.remove('on');
+}
+document.addEventListener('click', function(e){
+  var b=e.target.closest ? e.target.closest('[data-v]') : null;
+  if(b){ nav(b.dataset.v); }
+});
+document.getElementById('burger').addEventListener('click', function(){
+  side.classList.add('open'); scrim.classList.add('on');
+});
+scrim.addEventListener('click', function(){ side.classList.remove('open'); scrim.classList.remove('on'); });
+})();
+</script>
+</body>
+</html>

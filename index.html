@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pitsamorn Ingkavara — S/4HANA Test Manager · Digital Transformation · Data Governance</title>
+<meta name="description" content="ERP Project Manager and PMO Lead with 16+ years delivering large-scale SAP S/4HANA and Ariba transformations across PTT Group.">
+<meta name="author" content="Pitsamorn Ingkavara">
+<meta name="theme-color" content="#071A3D">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23071A3D'/%3E%3Crect x='4' y='4' width='56' height='56' rx='11' fill='none' stroke='%231E56E3' stroke-width='4'/%3E%3Ctext x='32' y='42' font-family='Arial,Helvetica,sans-serif' font-size='26' font-weight='700' fill='%23FFC62B' text-anchor='middle'%3EPI%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Pitsamorn Ingkavara Portfolio — Pitsamorn Ingkavara">
+<meta property="og:description" content="ERP Project Manager and PMO Lead with 16+ years delivering large-scale SAP S/4HANA and Ariba transformations across PTT Group.">
+<meta property="og:image" content="gal/uat-exit-analyzer.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<style>
+:root{
+  --paper:#F4F6FB; --surface:#FFFFFF; --surface-2:#E9EEF8;
+  --navy:#071A3D; --navy-2:#0E2A5C;
+  --ink:#101B34; --text:#39465F; --mute:#5B6884; --faint:#8A96AD;
+  --line:#DFE5F1; --line-soft:#EAEFF7;
+  --blue:#1E56E3; --blue-soft:#5B8BF7; --blue-wash:#E8EEFD;
+  --yellow:#FFC62B; --yellow-deep:#B8860B;
+  --good:#1B8A5A; --warn:#C2410C;
+  --r:14px; --r-sm:8px;
+  --sh:0 1px 2px rgba(7,26,61,.04), 0 10px 30px -18px rgba(7,26,61,.34);
+  --sh-lift:0 2px 6px rgba(7,26,61,.06), 0 22px 48px -22px rgba(7,26,61,.46);
+  --on-navy:#EAF0FC; --on-navy-mute:#9DB2D8;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#070F20; --surface:#0E1930; --surface-2:#16243F;
+    --navy:#040B1A; --navy-2:#0B1A36;
+    --ink:#EAF0FB; --text:#C0CBDF; --mute:#8D9BB6; --faint:#6C7B96;
+    --line:#1D2B46; --line-soft:#16233A;
+    --blue:#6E9BFF; --blue-soft:#8FB4FF; --blue-wash:#132549;
+    --yellow:#FFCE4D; --yellow-deep:#FFCE4D;
+    --good:#43B888; --warn:#F08A4B;
+    --sh:0 1px 2px rgba(0,0,0,.5), 0 10px 30px -18px rgba(0,0,0,.9);
+    --sh-lift:0 2px 6px rgba(0,0,0,.6), 0 22px 48px -22px rgba(0,0,0,1);
+    --on-navy:#EAF0FC; --on-navy-mute:#9DB2D8;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#070F20; --surface:#0E1930; --surface-2:#16243F;
+  --navy:#040B1A; --navy-2:#0B1A36;
+  --ink:#EAF0FB; --text:#C0CBDF; --mute:#8D9BB6; --faint:#6C7B96;
+  --line:#1D2B46; --line-soft:#16233A;
+  --blue:#6E9BFF; --blue-soft:#8FB4FF; --blue-wash:#132549;
+  --yellow:#FFCE4D; --yellow-deep:#FFCE4D;
+  --good:#43B888; --warn:#F08A4B;
+  --sh:0 1px 2px rgba(0,0,0,.5), 0 10px 30px -18px rgba(0,0,0,.9);
+  --sh-lift:0 2px 6px rgba(0,0,0,.6), 0 22px 48px -22px rgba(0,0,0,1);
+  --on-navy:#EAF0FC; --on-navy-mute:#9DB2D8;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--text);
+  font-family:"Manrope",-apple-system,Segoe UI,Roboto,sans-serif;
+  font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:"Sora",Arial,sans-serif; color:var(--ink); margin:0; text-wrap:balance; letter-spacing:-.025em; line-height:1.12}
+p{margin:0}
+img{max-width:100%; height:auto; display:block}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--yellow); outline-offset:2px; border-radius:4px}
+@media (prefers-reduced-motion:reduce){ *{animation:none!important; transition-duration:.01ms!important} }
+
+.wrap{max-width:1180px; margin:0 auto; padding-inline:22px}
+.eyebrow{
+  font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:600;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--blue);
+  display:inline-flex; align-items:center; gap:9px;
+}
+.eyebrow::before{content:""; width:22px; height:2px; background:var(--yellow); border-radius:2px}
+.eyebrow.on-navy{color:var(--yellow)}
+.num{font-variant-numeric:tabular-nums}
+
+/* ════ NAVBAR ════ */
+.nav{
+  position:sticky; top:0; z-index:60;
+  background:color-mix(in srgb,var(--paper) 88%, transparent);
+  backdrop-filter:blur(14px); border-bottom:1px solid var(--line-soft);
+}
+.nav .wrap{display:flex; align-items:center; gap:20px; height:64px}
+.brand{display:flex; align-items:center; gap:11px; text-decoration:none; flex:0 0 auto}
+.mark{
+  width:34px; height:34px; border-radius:9px; background:var(--navy); color:#fff;
+  display:grid; place-items:center; font-family:"Sora"; font-weight:800; font-size:13px;
+  letter-spacing:-.03em; box-shadow:inset 0 0 0 2px var(--blue);
+}
+.brand .nm{font-family:"Sora"; font-weight:700; font-size:15px; color:var(--ink); letter-spacing:-.02em; line-height:1.15}
+.brand .rl{font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.11em; text-transform:uppercase; color:var(--faint)}
+.navlinks{display:flex; gap:4px; margin-left:auto}
+.navlinks a{
+  font-size:13.5px; font-weight:600; color:var(--mute); text-decoration:none;
+  padding:7px 13px; border-radius:8px; white-space:nowrap; transition:.16s;
+}
+.navlinks a:hover{color:var(--ink); background:var(--surface-2)}
+.navlinks a[aria-current="true"]{color:var(--blue); background:var(--blue-wash)}
+.cta{
+  font-family:"Manrope"; font-size:13.5px; font-weight:700; text-decoration:none;
+  padding:10px 18px; border-radius:9px; background:var(--navy); color:#fff;
+  white-space:nowrap; transition:.18s; border:0; cursor:pointer; flex:0 0 auto;
+}
+.cta:hover{background:var(--blue); transform:translateY(-1px)}
+.cta.ghost{background:transparent; color:var(--ink); box-shadow:inset 0 0 0 1.5px var(--line)}
+.cta.ghost:hover{background:var(--surface); box-shadow:inset 0 0 0 1.5px var(--blue); color:var(--blue); transform:translateY(-1px)}
+.cta.sun{background:var(--yellow); color:#20180A}
+.cta.sun:hover{background:#FFD65E; color:#20180A}
+.progress{position:absolute; left:0; bottom:-1px; height:2px; background:var(--blue); width:0}
+@media (max-width:1000px){ .navlinks{display:none} }
+@media (max-width:520px){ .brand .rl{display:none} }
+
+/* ════ DOT NAV ════ */
+.dots{position:fixed; right:16px; top:50%; transform:translateY(-50%); z-index:50; display:flex; flex-direction:column; gap:11px}
+.dots button{
+  width:9px; height:9px; padding:0; border-radius:50%; border:0; cursor:pointer;
+  background:var(--line); transition:.25s; position:relative;
+}
+.dots button[aria-current="true"]{background:var(--blue); transform:scale(1.45)}
+.dots button::after{
+  content:attr(data-label); position:absolute; right:18px; top:50%; transform:translateY(-50%);
+  background:var(--navy); color:#fff; font-size:11px; font-weight:600; padding:4px 9px;
+  border-radius:6px; white-space:nowrap; opacity:0; pointer-events:none; transition:.18s;
+}
+.dots button:hover::after{opacity:1}
+@media (max-width:1240px){ .dots{display:none} }
+
+/* ════ HERO ════ */
+.hero{position:relative; overflow:hidden; background:var(--navy); color:var(--on-navy); padding-block:72px 0}
+.hero::before{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(760px 420px at 82% -8%, rgba(30,86,227,.55), transparent 62%),
+    radial-gradient(520px 320px at 6% 108%, rgba(255,198,43,.14), transparent 64%);
+}
+.hero::after{
+  content:""; position:absolute; inset:0; opacity:.5;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+                   linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size:62px 62px; mask-image:linear-gradient(180deg,#000,transparent 72%);
+}
+.hero .wrap{position:relative; z-index:2}
+.herogrid{display:grid; grid-template-columns:1.02fr .98fr; gap:54px; align-items:center}
+.hero h1{
+  font-size:clamp(36px,5.1vw,62px); font-weight:800; color:#fff; margin-top:20px;
+  letter-spacing:-.038em; line-height:1.05;
+}
+.hero h1 em{font-style:normal; color:var(--yellow)}
+.hero .lede{margin-top:22px; font-size:clamp(16px,1.55vw,18.5px); color:var(--on-navy-mute); max-width:54ch; line-height:1.66}
+.hero .lede b{color:#fff; font-weight:600}
+.herobtns{display:flex; flex-wrap:wrap; gap:11px; margin-top:30px}
+.meta{
+  margin-top:26px; display:flex; flex-wrap:wrap; gap:8px 20px;
+  font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--on-navy-mute);
+}
+.meta span{display:inline-flex; align-items:center; gap:7px}
+.pulse{width:7px; height:7px; border-radius:50%; background:var(--yellow); box-shadow:0 0 0 0 rgba(255,198,43,.6); animation:pl 2.6s infinite}
+@keyframes pl{0%{box-shadow:0 0 0 0 rgba(255,198,43,.55)}70%{box-shadow:0 0 0 10px rgba(255,198,43,0)}100%{box-shadow:0 0 0 0 rgba(255,198,43,0)}}
+
+.shot-hero{
+  border-radius:var(--r); overflow:hidden; box-shadow:0 30px 70px -26px rgba(0,0,0,.7);
+  border:1px solid rgba(255,255,255,.13); background:#fff; transform:perspective(1400px) rotateY(-4deg) rotateX(1.4deg);
+  transition:transform .55s cubic-bezier(.2,.7,.3,1);
+}
+.shot-hero:hover{transform:perspective(1400px) rotateY(0) rotateX(0)}
+.shot-hero .cap{
+  background:var(--navy-2); color:var(--on-navy-mute); font-family:"JetBrains Mono",monospace;
+  font-size:10.5px; letter-spacing:.09em; text-transform:uppercase; padding:9px 14px;
+  display:flex; justify-content:space-between; gap:10px;
+}
+.shot-hero .cap b{color:var(--yellow); font-weight:600}
+@media (max-width:980px){ .herogrid{grid-template-columns:1fr; gap:36px} .shot-hero{transform:none} }
+
+/* stat rail */
+.rail{position:relative; z-index:2; margin-top:58px; border-top:1px solid rgba(255,255,255,.13)}
+.railgrid{display:grid; grid-template-columns:repeat(4,1fr)}
+.railgrid div{padding:24px 26px 26px; border-right:1px solid rgba(255,255,255,.11)}
+.railgrid div:last-child{border-right:none}
+.railgrid .v{font-family:"Sora"; font-weight:800; font-size:clamp(26px,3.1vw,36px); color:#fff; letter-spacing:-.035em; line-height:1; font-variant-numeric:tabular-nums}
+.railgrid .v i{font-style:normal; color:var(--yellow)}
+.railgrid .k{font-size:12.5px; color:var(--on-navy-mute); margin-top:9px; line-height:1.45}
+@media (max-width:860px){
+  .railgrid{grid-template-columns:repeat(2,1fr)}
+  .railgrid div{border-bottom:1px solid rgba(255,255,255,.11)}
+  .railgrid div:nth-child(2n){border-right:none}
+  .railgrid div:nth-last-child(-n+2){border-bottom:none}
+}
+
+/* ════ SECTIONS ════ */
+section{padding-block:88px}
+.shead{max-width:70ch; margin-bottom:44px}
+.shead h2{font-size:clamp(27px,3.7vw,42px); font-weight:800; margin-top:16px}
+.shead p{margin-top:16px; font-size:17px; color:var(--mute); line-height:1.68}
+
+/* discipline cards */
+.three{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+.dcard{
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--r);
+  padding:28px 26px 26px; box-shadow:var(--sh); position:relative; overflow:hidden;
+  transition:transform .25s, box-shadow .25s;
+}
+.dcard:hover{transform:translateY(-3px); box-shadow:var(--sh-lift)}
+.dcard::before{content:""; position:absolute; inset:0 0 auto 0; height:4px; background:var(--blue)}
+.dcard:nth-child(2)::before{background:var(--yellow)}
+.dcard:nth-child(3)::before{background:var(--navy)}
+.dcard h3{font-size:20px; font-weight:700; margin:14px 0 14px}
+.dcard ul{margin:0; padding:0; list-style:none}
+.dcard li{font-size:14.5px; line-height:1.55; color:var(--text); padding-left:19px; position:relative; margin-bottom:8px}
+.dcard li::before{content:""; position:absolute; left:0; top:.6em; width:8px; height:2px; border-radius:2px; background:var(--blue-soft)}
+.dcard .pf{
+  margin-top:20px; padding:14px 15px; background:var(--blue-wash); border-radius:var(--r-sm);
+  font-size:13.5px; line-height:1.55; color:var(--text);
+}
+.dcard .pf b{color:var(--ink); font-weight:700}
+@media (max-width:900px){ .three{grid-template-columns:1fr} }
+
+/* ════ PROJECTS (alternating) ════ */
+.proj{display:grid; grid-template-columns:1fr 1fr; gap:52px; align-items:center; padding-block:46px; border-top:1px solid var(--line)}
+.proj:first-of-type{border-top:none; padding-top:8px}
+.proj.flip .ptext{order:2}
+.ptag{
+  display:inline-flex; align-items:center; gap:8px; font-family:"JetBrains Mono",monospace;
+  font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;
+  padding:6px 12px; border-radius:99px; background:var(--surface-2); color:var(--mute);
+}
+.ptag b{color:var(--blue); font-weight:600}
+.proj h3{font-size:clamp(23px,2.8vw,32px); font-weight:800; margin:18px 0 0; line-height:1.16}
+.proj h3 em{font-style:normal; color:var(--blue)}
+.proj .pd{margin-top:16px; font-size:16px; color:var(--mute); line-height:1.7; max-width:52ch}
+.kpis{display:flex; flex-wrap:wrap; gap:10px; margin-top:24px}
+.kpi{
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--r-sm);
+  padding:12px 16px; min-width:108px;
+}
+.kpi .v{font-family:"Sora"; font-weight:800; font-size:21px; color:var(--ink); letter-spacing:-.03em; line-height:1; font-variant-numeric:tabular-nums}
+.kpi .k{font-size:11.5px; color:var(--mute); margin-top:6px; line-height:1.35}
+.plink{
+  display:inline-flex; align-items:center; gap:9px; margin-top:26px; background:none; border:0; cursor:pointer;
+  font-family:"Manrope"; font-size:14.5px; font-weight:700; color:var(--blue); padding:0;
+}
+.plink .ar{
+  width:28px; height:28px; border-radius:50%; background:var(--blue-wash); color:var(--blue);
+  display:grid; place-items:center; font-size:13px; transition:.22s;
+}
+.plink:hover .ar{background:var(--blue); color:#fff; transform:translateX(4px)}
+.pvis{position:relative; border-radius:var(--r); overflow:hidden; border:1px solid var(--line); box-shadow:var(--sh); background:var(--surface-2); cursor:zoom-in}
+.pvis img{width:100%; transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.pvis:hover img{transform:scale(1.03)}
+.pvis figcaption{
+  position:absolute; left:0; right:0; bottom:0; padding:26px 18px 13px; color:#fff;
+  font-size:12.5px; font-weight:600; background:linear-gradient(transparent, rgba(4,11,26,.86));
+}
+@media (max-width:900px){ .proj{grid-template-columns:1fr; gap:28px} .proj.flip .ptext{order:0} }
+
+/* ════ GALLERY CAROUSEL ════ */
+.gwrap{background:var(--navy); color:var(--on-navy); border-radius:var(--r); overflow:hidden; box-shadow:var(--sh-lift)}
+.gbar{display:flex; align-items:center; gap:12px; padding:16px 20px; border-bottom:1px solid rgba(255,255,255,.11); flex-wrap:wrap}
+.chips{display:flex; gap:7px; flex-wrap:wrap}
+.chip{
+  font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.06em; font-weight:500;
+  padding:7px 13px; border-radius:99px; cursor:pointer; transition:.18s;
+  background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.15); color:var(--on-navy-mute);
+}
+.chip:hover{color:#fff; border-color:rgba(255,255,255,.4)}
+.chip[aria-pressed="true"]{background:var(--yellow); border-color:var(--yellow); color:#20180A; font-weight:600}
+.gcount{margin-left:auto; font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--on-navy-mute); font-variant-numeric:tabular-nums}
+.stage{position:relative; background:#0A1428; aspect-ratio:16/8.6; overflow:hidden}
+.stage img{
+  position:absolute; inset:0; margin:auto; max-width:100%; max-height:100%; width:auto; height:auto;
+  object-fit:contain; opacity:0; transition:opacity .62s ease;
+}
+.stage img.on{opacity:1}
+.gnav{
+  position:absolute; top:50%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%;
+  background:rgba(8,20,42,.72); border:1px solid rgba(255,255,255,.22); color:#fff; cursor:pointer;
+  font-size:18px; display:grid; place-items:center; backdrop-filter:blur(6px); transition:.18s; z-index:3;
+}
+.gnav:hover{background:var(--blue); border-color:var(--blue)}
+.gnav.prev{left:14px} .gnav.next{right:14px}
+.gmeta{padding:20px 22px; display:flex; gap:20px; align-items:flex-start; border-top:1px solid rgba(255,255,255,.11)}
+.gmeta .n{font-family:"JetBrains Mono",monospace; font-size:26px; font-weight:600; color:var(--yellow); line-height:1; flex:0 0 auto; font-variant-numeric:tabular-nums}
+.gmeta h4{font-family:"Sora"; font-size:17px; font-weight:700; color:#fff; letter-spacing:-.02em}
+.gmeta p{font-size:13.5px; color:var(--on-navy-mute); margin-top:7px; line-height:1.6; max-width:78ch}
+.gmeta .tk{
+  flex:0 0 auto; margin-left:auto; font-family:"JetBrains Mono",monospace; font-size:10px;
+  letter-spacing:.12em; text-transform:uppercase; padding:5px 11px; border-radius:99px;
+  background:rgba(255,255,255,.09); color:var(--on-navy-mute); white-space:nowrap;
+}
+.tick{height:3px; background:rgba(255,255,255,.12); position:relative}
+.tick i{display:block; height:100%; background:var(--yellow); width:0}
+.tick i.run{animation:sweep var(--dur,7s) linear forwards}
+@keyframes sweep{from{width:0}to{width:100%}}
+.rail2{display:flex; gap:9px; padding:16px 18px; overflow-x:auto; scrollbar-width:thin; background:rgba(0,0,0,.22)}
+.rail2 button{
+  flex:0 0 auto; width:104px; padding:0; border:2px solid transparent; border-radius:7px;
+  overflow:hidden; cursor:pointer; background:#0A1428; opacity:.45; transition:.22s; line-height:0;
+}
+.rail2 button:hover{opacity:.85}
+.rail2 button[aria-current="true"]{opacity:1; border-color:var(--yellow)}
+.rail2 img{width:100%; height:58px; object-fit:cover}
+.gplay{display:flex; align-items:center; gap:9px; padding:0 22px 18px; font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--on-navy-mute)}
+.gplay button{
+  background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.16); color:var(--on-navy-mute);
+  border-radius:99px; padding:6px 14px; cursor:pointer; font-family:inherit; font-size:11px; letter-spacing:.07em; transition:.18s;
+}
+.gplay button:hover{color:#fff; border-color:rgba(255,255,255,.4)}
+@media (max-width:720px){
+  .stage{aspect-ratio:16/11}
+  .gmeta{flex-wrap:wrap; gap:12px} .gmeta .tk{margin-left:0}
+  .gnav{width:36px; height:36px}
+}
+
+/* ════ SIGNALS ════ */
+.sig{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+.scard{
+  background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--yellow);
+  border-radius:var(--r); padding:26px 24px; box-shadow:var(--sh);
+}
+.scard .q{font-family:"Sora"; font-size:19px; font-weight:700; color:var(--ink); line-height:1.35; letter-spacing:-.02em}
+.scard p{margin-top:13px; font-size:14.5px; color:var(--mute); line-height:1.65}
+.scard .src{
+  margin-top:18px; padding-top:14px; border-top:1px solid var(--line-soft);
+  font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--faint);
+}
+@media (max-width:900px){ .sig{grid-template-columns:1fr} }
+
+/* ════ TIMELINE ════ */
+.jobs{border-top:1px solid var(--line)}
+.job{display:grid; grid-template-columns:170px 1fr; gap:28px; padding:26px 0; border-bottom:1px solid var(--line-soft)}
+.job .when{font-family:"JetBrains Mono",monospace; font-size:13px; font-weight:500; color:var(--blue); font-variant-numeric:tabular-nums}
+.job h3{font-size:19px; font-weight:700}
+.job .rl2{font-size:15px; font-weight:600; color:var(--blue); margin-top:4px}
+.job p{margin-top:9px; font-size:14.5px; color:var(--mute); line-height:1.65; max-width:76ch}
+.tags{display:flex; gap:7px; flex-wrap:wrap; margin-top:12px}
+.tg{font-family:"JetBrains Mono",monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; padding:4px 10px; border-radius:99px; background:var(--surface-2); color:var(--mute)}
+@media (max-width:700px){ .job{grid-template-columns:1fr; gap:8px} }
+
+/* ════ FINAL CTA + FOOTER ════ */
+.final{background:var(--navy); color:var(--on-navy); position:relative; overflow:hidden; border-radius:var(--r); padding:56px 44px}
+.final::before{content:""; position:absolute; inset:0; background:radial-gradient(600px 300px at 88% 10%, rgba(30,86,227,.5), transparent 64%)}
+.final > *{position:relative; z-index:2}
+.final h2{font-size:clamp(27px,3.6vw,40px); font-weight:800; color:#fff; max-width:19ch; margin-top:16px}
+.final p{margin-top:18px; font-size:17px; color:var(--on-navy-mute); max-width:58ch; line-height:1.7}
+.final .btns{display:flex; flex-wrap:wrap; gap:11px; margin-top:30px}
+footer{border-top:1px solid var(--line); padding-block:32px 44px; margin-top:88px}
+.fgrid{display:flex; flex-wrap:wrap; gap:22px 40px; align-items:flex-start; justify-content:space-between}
+footer .cr{font-size:13px; color:var(--faint); line-height:1.7; max-width:62ch}
+footer a{color:var(--mute); text-decoration:none; font-size:13.5px; font-weight:600}
+footer a:hover{color:var(--blue)}
+.flinks{display:flex; gap:20px; flex-wrap:wrap}
+
+/* ════ SLIDE-OVER ════ */
+.ov{position:fixed; inset:0; z-index:90; background:rgba(4,11,26,.62); backdrop-filter:blur(3px); display:none}
+.ov.on{display:block}
+.panel{
+  position:absolute; right:0; top:0; bottom:0; width:min(760px,100%); background:var(--paper);
+  overflow-y:auto; box-shadow:-30px 0 70px -30px rgba(0,0,0,.6); animation:slidein .38s cubic-bezier(.2,.8,.3,1);
+}
+@keyframes slidein{from{transform:translateX(40px)}to{transform:translateX(0)}}
+.phead{position:sticky; top:0; background:var(--navy); color:#fff; padding:24px 30px; display:flex; gap:16px; align-items:flex-start; z-index:2}
+.phead h3{color:#fff; font-size:21px; font-weight:700; flex:1}
+.phead .sub{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--yellow); margin-bottom:8px}
+.pclose{background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.22); color:#fff; width:34px; height:34px; border-radius:8px; cursor:pointer; font-size:15px; flex:0 0 auto}
+.pclose:hover{background:rgba(255,255,255,.22)}
+.pbody{padding:30px}
+.pbody h4{font-size:15px; font-weight:700; margin:28px 0 12px; color:var(--ink)}
+.pbody h4:first-child{margin-top:0}
+.pbody ul{margin:0; padding:0; list-style:none}
+.pbody li{font-size:14.5px; line-height:1.6; color:var(--text); padding-left:19px; position:relative; margin-bottom:9px}
+.pbody li::before{content:""; position:absolute; left:0; top:.62em; width:8px; height:2px; border-radius:2px; background:var(--blue-soft)}
+.pbody li b{color:var(--ink); font-weight:700}
+table.sp{width:100%; border-collapse:collapse; font-size:14px}
+table.sp td{padding:11px 0; border-bottom:1px solid var(--line-soft); vertical-align:top; line-height:1.55}
+table.sp tr:last-child td{border-bottom:none}
+table.sp td:first-child{width:40%; padding-right:18px; color:var(--mute); font-family:"JetBrains Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.05em; padding-top:13px}
+table.sp b{color:var(--ink); font-weight:700}
+.pshots{display:grid; grid-template-columns:1fr 1fr; gap:11px; margin-top:6px}
+.pshots button{padding:0; border:1px solid var(--line); border-radius:var(--r-sm); overflow:hidden; cursor:zoom-in; background:var(--surface-2); line-height:0}
+.pshots button:hover{border-color:var(--blue)}
+.note{margin-top:20px; padding:15px 16px; background:var(--blue-wash); border-radius:var(--r-sm); font-size:13.5px; line-height:1.6; color:var(--text)}
+.note b{color:var(--ink)}
+.scroller{overflow-x:auto}
+
+/* ════ LIGHTBOX ════ */
+.lb{position:fixed; inset:0; z-index:120; background:rgba(4,11,26,.95); padding:clamp(14px,3vw,44px); display:none; flex-direction:column}
+.lb.on{display:flex}
+.lbtop{display:flex; gap:18px; justify-content:space-between; align-items:flex-start; padding-bottom:14px; color:#fff}
+.lbtop h4{font-family:"Sora"; font-size:17px; color:#fff; font-weight:700}
+.lbtop p{font-size:13px; color:#9DB2D8; margin-top:6px; max-width:76ch; line-height:1.55}
+.lbclose{background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.25); color:#fff; width:36px; height:36px; border-radius:8px; cursor:pointer; font-size:16px; flex:0 0 auto}
+.lbclose:hover{background:rgba(255,255,255,.22)}
+.lbst{flex:1; min-height:0; display:flex; align-items:center; justify-content:center}
+.lbst img{max-width:100%; max-height:100%; object-fit:contain; background:#fff; border-radius:6px}
+@media (max-width:680px){ .lbtop p{display:none} }
+</style>
+</head>
+<body>
+<!-- ══════════ NAVBAR ══════════ -->
+<div class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="mark">PI</span>
+      <span>
+        <span class="nm">Pitsamorn Ingkavara</span><br>
+        <span class="rl">S/4HANA · Transformation · Data</span>
+      </span>
+    </a>
+    <nav class="navlinks" id="navlinks">
+      <a href="#capability">Capability</a>
+      <a href="#work">Work</a>
+      <a href="#gallery">Deliverables</a>
+      <a href="#signals">Evidence</a>
+      <a href="#experience">Experience</a>
+      <a href="console.html">Console</a>
+      <a href="docs/Resume_Pitsamorn_Ingkavara_2026.pdf" download>CV</a>
+    </nav>
+    <a class="cta" href="mailto:pingkavara@gmail.com?subject=Programme%20enquiry">Get in touch</a>
+  </div>
+  <div class="progress" id="prog"></div>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="herogrid">
+      <div>
+        <span class="eyebrow on-navy">Portfolio 2026 · Bangkok</span>
+        <h1>I make enterprise SAP programmes <em>provable</em> before they go live.</h1>
+        <p class="lede">ERP Project Manager and PMO Lead with <b>16+ years</b> delivering large-scale SAP S/4HANA and Ariba transformations across PTT Group. I own the three things that decide a go-live and are usually split across three people: <b>the test cycle that proves readiness</b>, <b>the programme that controls scope</b>, and <b>the data governance that makes the numbers trustworthy</b>.</p>
+        <div class="herobtns">
+          <a class="cta sun" href="#work">See the work</a>
+          <a class="cta ghost" href="#gallery" style="color:#fff; box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.3)">Browse deliverables</a>
+          <a class="cta ghost" href="docs/Resume_Pitsamorn_Ingkavara_2026.pdf" download style="color:#fff; box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.3)">Download CV (PDF)</a>
+        </div>
+        <div class="meta">
+          <span><i class="pulse"></i> Available — hybrid, Thailand &amp; SEA</span>
+          <span>pingkavara@gmail.com</span>
+          <span>+66 86 495 6993</span>
+        </div>
+      </div>
+      <figure class="shot-hero" style="margin:0">
+        <img src="gal/uat-exit-analyzer.jpg" alt="UAT Exit Analyzer executive summary showing 93.8% execution, 84.9% completed, 81.7% clean pass against a 95% gate, and 111 active defects" width="1600" height="808">
+        <figcaption class="cap"><span>UAT Exit Analyzer · Executive summary</span><b>Live · 4,071 tests</b></figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="rail">
+    <div class="wrap" style="padding-inline:0">
+      <div class="railgrid">
+        <div><div class="v num">16<i>+</i></div><div class="k">Years delivering SAP ERP, Ariba and enterprise data programmes</div></div>
+        <div><div class="v num">4,071</div><div class="k">Test cases governed to an exit gate across 7 workstreams</div></div>
+        <div><div class="v num">98.80<i>%</i></div><div class="k">Data Quality Index sustained against a 98.00% target</div></div>
+        <div><div class="v num">95<i>%</i></div><div class="k">Less status reporting effort — one day down to fifteen minutes</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ CAPABILITY ══════════ -->
+<section id="capability">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">What I own</span>
+      <h2>Three disciplines that usually fail separately</h2>
+      <p>Go-live problems are rarely one team's fault. A test cycle that cannot prove readiness, a scope that moved without a decision, and master data nobody governed all arrive at the same steering meeting. I have run all three on the same estate.</p>
+    </div>
+    <div class="three">
+      <div class="dcard">
+        <span class="eyebrow">Discipline 01</span>
+        <h3>S/4HANA Test Management</h3>
+        <ul>
+          <li>Test strategy and master test plan</li>
+          <li>SIT / UAT execution and test directorship</li>
+          <li>Entry and exit criteria, readiness gates</li>
+          <li>Defect triage, RCA, SLA and escalation</li>
+          <li>Legacy integration and cutover readiness</li>
+          <li>Jira / Xray, Tosca, automated burn-down</li>
+        </ul>
+        <div class="pf"><b>Proof —</b> UAT Test Director, 7 workstreams, 4,071 test cases, 30 modules, 8 legacy applications integrated.</div>
+      </div>
+      <div class="dcard">
+        <span class="eyebrow">Discipline 02</span>
+        <h3>Transformation Programme Management</h3>
+        <ul>
+          <li>Programme and portfolio governance</li>
+          <li>Steering Committee decision packs</li>
+          <li>As-is / to-be end-to-end process architecture</li>
+          <li>Fit-to-standard and formal change control</li>
+          <li>Legacy disposition and contract sequencing</li>
+          <li>Waterfall, Agile/Scrum and hybrid delivery</li>
+        </ul>
+        <div class="pf"><b>Proof —</b> VMCS: 8 fragmented vendor touchpoints consolidated into 2 connected portals across 3 modules.</div>
+      </div>
+      <div class="dcard">
+        <span class="eyebrow">Discipline 03</span>
+        <h3>Data Governance &amp; Management</h3>
+        <ul>
+          <li>DG operating model, policy and standards</li>
+          <li>Data domains and stewardship enablement</li>
+          <li>Critical Data Elements and DQ rule design</li>
+          <li>DQI measurement and remediation</li>
+          <li>Metadata, lineage, catalog, access control</li>
+          <li>Data classification, PDPA, security-by-design</li>
+        </ul>
+        <div class="pf"><b>Proof —</b> 39 data domains governed; 98.80% DQI across 132 business rules over 5.99M records per cycle.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ WORK ══════════ -->
+<section id="work" style="background:var(--surface); border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">Selected work</span>
+      <h2>Three programmes, three measurable outcomes</h2>
+      <p>Each opens a full case study — the mandate, what I built, and the artefacts it produced.</p>
+    </div>
+
+    <!-- project 1 -->
+    <article class="proj">
+      <div class="ptext">
+        <span class="ptag"><b>01</b> · A PTT Group petrochemical company · 2024–present</span>
+        <h3>Instrumented a 4,071-case UAT cycle and <em>cut status reporting by 95%</em></h3>
+        <p class="pd">As UAT Test Director I owned the quality gate for a seven-workstream S/4HANA transformation — then built the analytics that proved readiness. One day of manual status assembly became a fifteen-minute generated pack, and open issues started routing themselves to their owners.</p>
+        <div class="kpis">
+          <div class="kpi"><div class="v num">4,071</div><div class="k">Test cases to gate</div></div>
+          <div class="kpi"><div class="v num">30</div><div class="k">Modules tracked</div></div>
+          <div class="kpi"><div class="v num">~95%</div><div class="k">Less reporting effort</div></div>
+          <div class="kpi"><div class="v num">98%</div><div class="k">Issue traceability</div></div>
+        </div>
+        <button class="plink" type="button" data-open="c1">Read the case study <span class="ar">→</span></button>
+      </div>
+      <figure class="pvis" data-full="gal/module-progress-matrix.jpg" data-title="Module progress matrix" data-cap="Per-module progress across master data, transactional, month-end and report categories — 30 modules, colour-coded against thresholds, with S1–S4 defect counts and risk rating on every row." style="margin:0">
+        <img src="gal/module-progress-matrix.jpg" alt="Module progress matrix showing 30 modules with per-category completion, defect counts and risk ratings" loading="lazy">
+        <figcaption>Module progress matrix — 30 modules, 4 test categories, risk-rated</figcaption>
+      </figure>
+    </article>
+
+    <!-- project 2 -->
+    <article class="proj flip">
+      <div class="ptext">
+        <span class="ptag"><b>02</b> · the group</span>
+        <h3>Consolidated 8 vendor touchpoints into <em>2 connected portals</em></h3>
+        <p class="pd">VMCS — the Vendor Management &amp; Collaboration System. I owned the as-is / to-be Procure-to-Pay architecture and the legacy disposition strategy: which applications move to the core, which get re-interfaced, which get rebuilt, and which retire — sequenced against contracts that were already expiring.</p>
+        <div class="kpis">
+          <div class="kpi"><div class="v num">8 → 2</div><div class="k">Touchpoints to portals</div></div>
+          <div class="kpi"><div class="v num">3</div><div class="k">Modules scoped</div></div>
+          <div class="kpi"><div class="v num">4 → 1</div><div class="k">Vendor registrations</div></div>
+          <div class="kpi"><div class="v num">3 → 1</div><div class="k">Vendor logins</div></div>
+        </div>
+        <button class="plink" type="button" data-open="c2">Read the case study <span class="ar">→</span></button>
+      </div>
+      <figure class="pvis" data-full="gal/vmcs-consolidation.jpg" data-title="From 8 touchpoints into 2 connected portals" data-cap="The consolidation case as presented to stakeholders: eight vendor touchpoints, four registrations and three logins on the left; the Vendor Management and Vendor Collaboration components on the right, with the capability each absorbs." style="margin:0">
+        <img src="gal/vmcs-consolidation.jpg" alt="Diagram showing eight vendor touchpoints consolidating into two connected portals" loading="lazy">
+        <figcaption>Eight systems, four registrations, three logins — reduced to two portals</figcaption>
+      </figure>
+    </article>
+
+    <!-- project 3 -->
+    <article class="proj">
+      <div class="ptext">
+        <span class="ptag"><b>03</b> · A PTT Group petrochemical company · 2019–2023</span>
+        <h3>Governed 39 data domains to a <em>98.80% Data Quality Index</em></h3>
+        <p class="pd">Built the enterprise data governance function from nothing: operating model, three-tier policy architecture, stewardship programme, and the DQI framework that still runs monthly. Governance only counts when it produces a number an executive can act on — this one does, against a published target.</p>
+        <div class="kpis">
+          <div class="kpi"><div class="v num">39</div><div class="k">Data domains</div></div>
+          <div class="kpi"><div class="v num">132</div><div class="k">Business rules</div></div>
+          <div class="kpi"><div class="v num">5.99M</div><div class="k">Records per cycle</div></div>
+          <div class="kpi"><div class="v num">&gt;80%</div><div class="k">SAP master data covered</div></div>
+        </div>
+        <button class="plink" type="button" data-open="c3">Read the case study <span class="ar">→</span></button>
+      </div>
+      <figure class="pvis" data-full="gal/dq-dashboard.jpg" data-title="Data quality control dashboard" data-cap="Composite Data Quality Index at 98.80% against a 98.00% target, twelve-month trend, per-dimension gauges for accuracy, completeness, validity, uniqueness and reliability, passed-versus-failed records by data element, and a business view drilling to individual record errors." style="margin:0">
+        <img src="gal/dq-dashboard.jpg" alt="Data quality dashboard showing 98.80% index, dimension gauges, trend lines and record-level error drill-down" loading="lazy">
+        <figcaption>DQI dashboard — 98.80% composite against a 98.00% target</figcaption>
+      </figure>
+    </article>
+  </div>
+</section>
+
+<!-- ══════════ GALLERY ══════════ -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">Deliverables</span>
+      <h2>Twenty-six artefacts, one at a time</h2>
+      <p>Dashboards I built, architectures I owned, governance material I authored. It advances on its own — or filter by discipline and step through at your pace.</p>
+    </div>
+
+    <div class="gwrap">
+      <div class="gbar">
+        <div class="chips">
+          <button class="chip" type="button" data-f="all" aria-pressed="true">All work</button>
+          <button class="chip" type="button" data-f="test" aria-pressed="false">Test management</button>
+          <button class="chip" type="button" data-f="dt" aria-pressed="false">Transformation</button>
+          <button class="chip" type="button" data-f="dg" aria-pressed="false">Data governance</button>
+        </div>
+        <span class="gcount" id="gcount">01 / 26</span>
+      </div>
+
+      <div class="stage" id="stage">
+        <img id="imgA" class="on" src="gal/uat-exit-analyzer.jpg" alt="UAT Exit Analyzer executive summary">
+        <img id="imgB" src="" alt="">
+        <button class="gnav prev" id="gprev" type="button" aria-label="Previous deliverable">‹</button>
+        <button class="gnav next" id="gnext" type="button" aria-label="Next deliverable">›</button>
+      </div>
+
+      <div class="tick"><i id="tickbar"></i></div>
+
+      <div class="gmeta">
+        <span class="n num" id="gnum">01</span>
+        <div style="flex:1">
+          <h4 id="gtitle">UAT Exit Analyzer — executive summary</h4>
+          <p id="gcap">Readiness measured against the exit gate: 93.8% execution, 84.9% completed, 81.7% clean pass versus a 95% target, and 111 active S1–S3 defects with 94 past SLA — plus the critical findings the Steering Committee had to see before deciding.</p>
+        </div>
+        <span class="tk" id="gtrack">Test management</span>
+      </div>
+
+      <div class="rail2" id="rail2"></div>
+
+      <div class="gplay">
+        <button id="gtoggle" type="button" aria-pressed="true">❚❚ Pause</button>
+        <span>Auto-advances every 7 seconds · click an image to enlarge · ← → to step</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SIGNALS ══════════ -->
+<section id="signals" style="background:var(--surface); border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">Evidence</span>
+      <h2>Three things you can verify before you hire me</h2>
+      <p>Not adjectives — artefacts. Every claim on this page traces to a document, a dashboard, or an architecture I can walk you through in an interview.</p>
+    </div>
+    <div class="sig">
+      <div class="scard">
+        <p class="q">The readiness gate was a number, not an opinion.</p>
+        <p>The UAT Exit Analyzer reports clean pass at 81.7% against a 95% gate and names the 483 tests still needed to close it. When a programme is asked to approve go-live, that is the difference between a decision and a guess.</p>
+        <p class="src">Artefact — UAT Exit Analyzer</p>
+      </div>
+      <div class="scard">
+        <p class="q">The consolidation case survived contract reality.</p>
+        <p>Eight vendor systems reduced to two portals, with every legacy application classified — move, re-integrate, rebuild, report-only or retire — and the transition sequenced around the GEP expiry in Sep 2025 and the Ariba downstream expiry in Aug 2026.</p>
+        <p class="src">Artefact — As-is / to-be PTP architecture</p>
+      </div>
+      <div class="scard">
+        <p class="q">The governance framework still runs without me.</p>
+        <p>The DQI framework and measurement formulas I established in 2020 continue to report 98.80% against a 98.00% target across 132 rules and 5.99 million records a cycle, years after the foundation programme closed.</p>
+        <p class="src">Artefact — Data quality control dashboard</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ EXPERIENCE ══════════ -->
+<section id="experience">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">Track record</span>
+      <h2>Sixteen years on one of Thailand's largest SAP estates</h2>
+    </div>
+    <div class="jobs">
+      <div class="job">
+        <div class="when">2024 — present</div>
+        <div>
+          <h3>PTT Global Chemical PCL</h3>
+          <div class="rl2">S/4HANA Test Manager (UAT Test Director) · PTP Legacy Integration Manager</div>
+          <p>Seven functional workstreams, 4,071 test cases across 30 modules, eight legacy applications integrated and cutover-verified for Procure-to-Pay, with Jira-connected reporting automation and Steering Committee checkpoint reporting.</p>
+          <div class="tags"><span class="tg">Test management</span><span class="tg">Legacy integration</span><span class="tg">Automation</span></div>
+        </div>
+      </div>
+      <div class="job">
+        <div class="when">2023 — 2025</div>
+        <div>
+          <h3>Thai Oil PCL</h3>
+          <div class="rl2">Data Governance &amp; Security Lead / PMO</div>
+          <p>Data classification, content-handling standards and governance-by-design controls embedded into the delivery lifecycle, so data quality, access control and privacy were designed in at solution stage rather than remediated after go-live.</p>
+          <div class="tags"><span class="tg">Data governance</span><span class="tg">Security</span><span class="tg">PMO</span></div>
+        </div>
+      </div>
+      <div class="job">
+        <div class="when">2023</div>
+        <div>
+          <h3>PTT Exploration &amp; Production PCL</h3>
+          <div class="rl2">S/4HANA PMO Lead · Project Manager, GEP Smart</div>
+          <p>S/4HANA post-assessment consolidated into a prioritised transformation roadmap for executive decision, and full-lifecycle delivery of the GEP Smart source-to-pay implementation including licence and vendor contract management.</p>
+          <div class="tags"><span class="tg">Programme</span><span class="tg">PMO</span><span class="tg">Source-to-pay</span></div>
+        </div>
+      </div>
+      <div class="job">
+        <div class="when">2019 — 2023</div>
+        <div>
+          <h3>PTT Global Chemical PCL</h3>
+          <div class="rl2">Data Governance &amp; Management Lead</div>
+          <p>Enterprise DG operating model, three-tier policy architecture, 39 data domains, the Data Quality Index framework, stewardship enablement across concurrent digital initiatives, and delivery of the data platform and data-product layer through to API-based data services.</p>
+          <div class="tags"><span class="tg">Data governance</span><span class="tg">Data platform</span><span class="tg">Change management</span></div>
+        </div>
+      </div>
+      <div class="job">
+        <div class="when">2009 — 2019</div>
+        <div>
+          <h3>PTT Digital Solution Co., Ltd.</h3>
+          <div class="rl2">SAP &amp; Legacy Project Manager</div>
+          <p>SAP ERP (ECC / S/4HANA) and SAP Ariba implementations across PTT Group companies — GC, Thai Oil, HMC and IRPC — specialising in Procure-to-Pay and Source-to-Contract integration, from fit-to-standard through SIT/UAT, go-live and hypercare.</p>
+          <div class="tags"><span class="tg">SAP delivery</span><span class="tg">Ariba</span><span class="tg">P2P / S2C</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FINAL CTA ══════════ -->
+<section style="padding-block:0 0">
+  <div class="wrap">
+    <div class="final">
+      <span class="eyebrow on-navy">Next step</span>
+      <h2>Bring me in before the readiness gate, not after it.</h2>
+      <p>I am open to hybrid engagements — remote delivery with on-site programme presence — across Thailand and South-East Asia, as S/4HANA Test Manager, Transformation Programme Manager, or Data Governance Lead.</p>
+      <div class="btns">
+        <a class="cta sun" href="mailto:pingkavara@gmail.com?subject=Programme%20enquiry">Email me</a>
+        <a class="cta ghost" href="https://www.linkedin.com/in/pitsamorn-ingkavara" target="_blank" rel="noopener" style="color:#fff; box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.3)">Connect on LinkedIn</a>
+        <a class="cta ghost" href="docs/Portfolio_Pitsamorn_Ingkavara_2026.pdf" download style="color:#fff; box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.3)">Portfolio deck (PDF)</a>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="wrap">
+      <div class="fgrid">
+        <p class="cr">© 2026 Pitsamorn Ingkavara · Bangkok, Thailand<br>Deliverables shown are work product from programmes at PTT Global Chemical, PTT Exploration &amp; Production, Thai Oil and PTT Digital Solution.</p>
+        <div class="flinks">
+          <a href="mailto:pingkavara@gmail.com">pingkavara@gmail.com</a>
+          <a href="tel:+66864956993">+66 86 495 6993</a>
+          <a href="https://www.linkedin.com/in/pitsamorn-ingkavara" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</section>
+
+<div class="dots" id="dots"></div>
+
+<!-- ══════════ SLIDE-OVER ══════════ -->
+<div class="ov" id="ov">
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="ptitle">
+    <div class="phead">
+      <div style="flex:1">
+        <div class="sub" id="psub">Case study</div>
+        <h3 id="ptitle">&nbsp;</h3>
+      </div>
+      <button class="pclose" id="pclose" type="button" aria-label="Close case study">✕</button>
+    </div>
+    <div class="pbody" id="pbody"></div>
+  </div>
+</div>
+
+<!-- ══════════ LIGHTBOX ══════════ -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-labelledby="lbt">
+  <div class="lbtop">
+    <div><h4 id="lbt">&nbsp;</h4><p id="lbc"></p></div>
+    <button class="lbclose" id="lbx" type="button" aria-label="Close image">✕</button>
+  </div>
+  <div class="lbst"><img id="lbi" src="" alt=""></div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ───────── data ───────── */
+var G = [
+ {f:"uat-exit-analyzer", t:"test", ti:"UAT Exit Analyzer — executive summary", c:"Readiness measured against the exit gate: 93.8% execution, 84.9% completed, 81.7% clean pass versus a 95% target, and 111 active S1–S3 defects with 94 past SLA — plus the critical findings the Steering Committee had to see before deciding."},
+ {f:"module-progress-matrix", t:"test", ti:"Module progress matrix", c:"Per-module progress across master data, transactional, month-end and report categories — 30 modules, colour-coded against thresholds, with S1–S4 defect counts and a risk rating on every row."},
+ {f:"test-reporting", t:"test", ti:"Automated test progress reporting", c:"The Jira REST API connector and the generated Test Progress Report — execution velocity, burn-down, pass rate, defect and blocker counts, and a status breakdown drilling to individual issues. This is the one-day-to-fifteen-minutes change."},
+ {f:"test-uat-control", t:"test", ti:"UAT control sheet and burn-down", c:"Overall UAT test-case position across the seven workstreams, the UAT health-check gauge, per-workstream deferred / failed / in-progress / not-started breakdown, and the baseline-versus-actual cumulative progress curve."},
+ {f:"test-issue-analytics", t:"test", ti:"Issue analytics against SLA", c:"Issue processing-time analytics with severity-banded SLA baselines — critical, high, medium and low — showing active versus breached counts, overdue status and the ageing that drives escalation."},
+ {f:"jira-workspace", t:"test", ti:"Jira test management workspace", c:"The working Jira estate behind the programme — UAT issue management, progress updates, SIT legacy test control sheets and issue logs, organised as linked spaces per workstream."},
+ {f:"vmcs-consolidation", t:"dt", ti:"From 8 touchpoints into 2 portals", c:"The consolidation case as presented to stakeholders: eight vendor touchpoints, four registrations and three logins on the left; the Vendor Management and Vendor Collaboration components on the right, with the capability each absorbs."},
+ {f:"ptp-asis", t:"dt", ti:"As-is Procure-to-Pay architecture", c:"The as-is estate — eight numbered core process steps from purchase requisition through vendor management, with every legacy and satellite system mapped onto them, and each application tagged with its disposition."},
+ {f:"ptp-tobe", t:"dt", ti:"To-be Procure-to-Pay architecture", c:"The target state after consolidation — VMCS replacing the fragmented vendor-facing systems, retained specialist tools re-interfaced, retirements executed, and the transition sequenced against contract expiries."},
+ {f:"vmcs-ui", t:"dt", ti:"Delivered vendor collaboration portal", c:"The vendor-facing landing experience — AVL company profile submission, vendor news, and a live to-do list surfacing outstanding registration, PO tracking, payment tracking and delivery confirmation items in one place."},
+ {f:"vendor-onboarding", t:"dt", ti:"Vendor registration and onboarding journey", c:"The redesigned five-stage vendor journey — verify, register with form, documents and questionnaire, assess, approve, onboard — with the benefits framed for the business."},
+ {f:"vmcs-module1", t:"dt", ti:"Module 1 — Vendor Collaboration Portal scope", c:"End-to-end functional scope across discovery, account management, registration, collaboration and consent compliance — each feature flagged mandatory or optional, reusable or new build, with integration points marked."},
+ {f:"vmcs-module2", t:"dt", ti:"Module 2 — Vendor Management Portal scope", c:"Procurement-facing scope covering AVL identification, qualification, on/off-boarding, performance evaluation, vendor risk management and access control — the full vendor lifecycle."},
+ {f:"vmcs-module3", t:"dt", ti:"Module 3 — Procurement Operation Support scope", c:"Operational scope across access control, smart work request, PO tracking, delivery confirmation, smart receiving, shipping management and payment tracking."},
+ {f:"vmcs-features", t:"dt", ti:"VMCS core service catalogue", c:"The feature-level service definition handed to the build team — registration and unblocking, extending a registered vendor, profile and category updates, performance evaluation, risk management, AVL search and linked procurement operations."},
+ {f:"dq-dashboard", t:"dg", ti:"Data quality control dashboard", c:"Composite Data Quality Index at 98.80% against a 98.00% target, twelve-month trend, per-dimension gauges, passed-versus-failed records by data element, and a business view drilling to individual record errors."},
+ {f:"dg-39-domains", t:"dg", ti:"39 enterprise data domains", c:"Every data domain placed on the end-to-end value chain and support functions, colour-coded by adoption year, flagged where it contains personal or sensitive personal data under PDPA, and extended with external data sources."},
+ {f:"dq-value-chain", t:"dg", ti:"Data quality results by domain", c:"Achieved DQI overlaid on the value chain with the rule count behind each score — material spare-part 98.38% on 25 rules, lab operation 97.76% on 41, accounting 96.57% on 16, vendor 95.93% on 26, customer and partners 90.44% on 10."},
+ {f:"dg-roadmap", t:"dg", ti:"Four-year data governance roadmap", c:"The adoption plan across six parallel workstreams — organisation, policy and standards, data product delivery, change management, technology, and DG adoption for SAP data sources — with completion state marked phase by phase."},
+ {f:"dq-process", t:"dg", ti:"Data quality management process", c:"The controlled process documented across six roles — DQ Analyst, DG Officer, Data Custodian, DQ Developer, Business Data Steward and Data Owner — from monthly report through rule implementation, steward review and owner sign-off."},
+ {f:"dg-framework", t:"dg", ti:"Policy architecture", c:"The three-tier policy set authored for the organisation: governing DG policy, supporting policies for content handling, metadata, security, quality, master data and classification, and the procedures beneath them."},
+ {f:"dg-operating-model", t:"dg", ti:"Operating model options", c:"Four operating models put to the executive with trade-offs and organisation structures — distributed stewardship, centralised internal capability, hybrid for cross-BU data areas, and outsourced management."},
+ {f:"dg-capability-stack", t:"dg", ti:"Data platform capability stack", c:"From business use cases and analytics capability down through data service — integration, ingestion, storage, data product service and self-service analytics — over the data management execution layer and governance framework, tied to four adoption goals."},
+ {f:"dg-data-product", t:"dg", ti:"Data product implementation model", c:"How a use-case requirement becomes a consumable data product — from BRD and systems of record, through direct and indirect integration, into governed data products, out to consumption archetypes and named use cases."},
+ {f:"dg-service-utilization", t:"dg", ti:"Consumption strategy", c:"Consumption options assessed against complexity and user group — spreadsheets, BI dashboards, custom dashboards, no-code wrangling, SQL, notebooks and APIs — supporting the decision to focus on API services."},
+ {f:"dg-smart-operation", t:"dg", ti:"Executive framing for the programme", c:"Five approaches spanning business initiative, data capability, data governance, data technology and data product, each tied to a named outcome, under a single data-driven smart operation objective."}
+];
+var TRACK = {test:"Test management", dt:"Transformation", dg:"Data governance"};
+
+/* ───────── gallery ───────── */
+var stage=document.getElementById('stage'), A=document.getElementById('imgA'), B=document.getElementById('imgB'),
+    gnum=document.getElementById('gnum'), gtitle=document.getElementById('gtitle'), gcap=document.getElementById('gcap'),
+    gtrack=document.getElementById('gtrack'), gcount=document.getElementById('gcount'),
+    rail=document.getElementById('rail2'), tick=document.getElementById('tickbar'),
+    toggle=document.getElementById('gtoggle');
+var set=G.slice(), i=0, front=A, timer=null, playing=true, DUR=7000, booted=false;
+
+function pad(n){ return (n<10?'0':'')+n; }
+
+function buildRail(){
+  rail.innerHTML='';
+  set.forEach(function(s,n){
+    var b=document.createElement('button');
+    b.type='button'; b.setAttribute('aria-label','Show '+s.ti);
+    b.innerHTML='<img src="gal/'+s.f+'-t.jpg" alt="" loading="lazy">';
+    b.addEventListener('click', function(){ go(n,true); });
+    rail.appendChild(b);
+  });
+}
+function paint(){
+  var s=set[i];
+  gnum.textContent=pad(i+1);
+  gtitle.textContent=s.ti;
+  gcap.textContent=s.c;
+  gtrack.textContent=TRACK[s.t];
+  gcount.textContent=pad(i+1)+' / '+pad(set.length);
+  Array.prototype.forEach.call(rail.children,function(b,n){
+    if(n===i){
+      b.setAttribute('aria-current','true');
+      var left = b.offsetLeft - rail.clientWidth/2 + b.clientWidth/2;
+      rail.scrollTo({ left: Math.max(0,left), behavior: booted ? 'smooth' : 'auto' });
+    } else b.removeAttribute('aria-current');
+  });
+  tick.classList.remove('run'); void tick.offsetWidth;
+  if(playing){ tick.style.setProperty('--dur', DUR+'ms'); tick.classList.add('run'); }
+}
+function go(n, manual){
+  if(!set.length) return;
+  i=(n+set.length)%set.length;
+  var s=set[i], back=(front===A?B:A);
+  back.onload=function(){
+    back.classList.add('on'); front.classList.remove('on'); front=back; back.onload=null;
+  };
+  back.alt=s.ti;
+  back.src='gal/'+s.f+'.jpg';
+  if(back.complete) back.onload();
+  paint();
+  if(manual) restart();
+}
+function tickOn(){ if(playing) timer=setTimeout(function(){ go(i+1); tickOn(); }, DUR); }
+function restart(){ clearTimeout(timer); tickOn(); }
+function setPlaying(p){
+  playing=p; clearTimeout(timer);
+  toggle.textContent = p ? '❚❚ Pause' : '▶ Play';
+  toggle.setAttribute('aria-pressed', String(p));
+  if(p){ paint(); tickOn(); } else { tick.classList.remove('run'); }
+}
+toggle.addEventListener('click', function(){ setPlaying(!playing); });
+document.getElementById('gprev').addEventListener('click', function(){ go(i-1,true); });
+document.getElementById('gnext').addEventListener('click', function(){ go(i+1,true); });
+stage.addEventListener('mouseenter', function(){ if(playing){ clearTimeout(timer); tick.classList.remove('run'); } });
+stage.addEventListener('mouseleave', function(){ if(playing){ paint(); tickOn(); } });
+
+Array.prototype.forEach.call(document.querySelectorAll('.chip'), function(c){
+  c.addEventListener('click', function(){
+    var f=c.dataset.f;
+    Array.prototype.forEach.call(document.querySelectorAll('.chip'), function(o){ o.setAttribute('aria-pressed', String(o===c)); });
+    set = (f==='all') ? G.slice() : G.filter(function(s){ return s.t===f; });
+    buildRail(); go(0,true);
+  });
+});
+
+/* click stage → lightbox */
+var lb=document.getElementById('lb'), lbi=document.getElementById('lbi'), lbt=document.getElementById('lbt'), lbc=document.getElementById('lbc');
+function openLb(src,title,cap,alt){
+  lbi.src=src; lbi.alt=alt||title; lbt.textContent=title; lbc.textContent=cap;
+  lb.classList.add('on'); document.body.style.overflow='hidden'; document.getElementById('lbx').focus();
+}
+function closeLb(){ lb.classList.remove('on'); lbi.src=''; document.body.style.overflow=''; }
+stage.addEventListener('click', function(e){
+  if(e.target.closest('.gnav')) return;
+  var s=set[i]; openLb('gal/'+s.f+'.jpg', s.ti, s.c, s.ti);
+});
+stage.style.cursor='zoom-in';
+document.getElementById('lbx').addEventListener('click', closeLb);
+lb.addEventListener('click', function(e){ if(e.target===lb || e.target.classList.contains('lbst')) closeLb(); });
+
+/* project visuals + panel shots → lightbox */
+document.addEventListener('click', function(e){
+  var f=e.target.closest ? e.target.closest('[data-full]') : null;
+  if(f){ openLb(f.dataset.full, f.dataset.title||'', f.dataset.cap||'', f.dataset.title||''); }
+});
+
+/* ───────── case study panel ───────── */
+var CASES={
+ c1:{sub:"Case study 01 · PTT Global Chemical · 2024 – present",
+   ti:"UAT Test Director on an enterprise S/4HANA transformation",
+   html:'<h4>The mandate</h4><p style="font-size:15px;color:var(--mute);line-height:1.68">Own the quality gate for a seven-workstream S/4HANA programme, and prove readiness to a Steering Committee that had to approve go-live on evidence rather than opinion.</p>'+
+     '<h4>Scope governed</h4><div class="scroller"><table class="sp">'+
+     '<tr><td>Workstreams</td><td><b>RTR · OTC · PTP · MTS · PPD · PTA · Cross-function</b> — seven streams under one test governance model</td></tr>'+
+     '<tr><td>Test cases</td><td><b>4,071</b> tracked to the exit gate across <b>30 modules</b> and four test categories</td></tr>'+
+     '<tr><td>Exit position</td><td>93.8% executed · 84.9% completed · <b>81.7% clean pass</b> against a 95% gate — a 13.3 pp gap named as 483 outstanding tests</td></tr>'+
+     '<tr><td>Defect control</td><td><b>111</b> active S1–S3 defects, 94 SLA-breached, tracked by severity band with ageing</td></tr>'+
+     '<tr><td>Legacy integration</td><td><b>8</b> applications integrated and cutover-verified for Procure-to-Pay</td></tr>'+
+     '<tr><td>Toolchain</td><td>Jira / Xray · Tosca · Power BI · Python with the Jira REST API · UiPath · Copilot</td></tr></table></div>'+
+     '<h4>What I built to run it</h4><ul>'+
+     '<li><b>UAT Exit Analyzer</b> — a live readiness gate combining test progress and open-defect risk, with the critical findings a steering group needs before deciding</li>'+
+     '<li><b>Module progress matrix</b> — per-module completion by test category, risk-rated, drilling into remaining cases and active defects</li>'+
+     '<li><b>Jira-connected dashboards</b> — planned versus actual burn-down, per-workstream status, execution velocity</li>'+
+     '<li><b>SLA issue analytics</b> — severity-banded ageing that surfaces breach before it becomes escalation</li>'+
+     '<li><b>Issue auto-notification</b> — open issues routed to named owners over email or Teams, with no manual chasing</li></ul>'+
+     '<h4>Outcome</h4><ul>'+
+     '<li><b>~95% less</b> status reporting effort — one day reduced to about fifteen minutes</li>'+
+     '<li><b>~50% less</b> PMO administrative overhead</li>'+
+     '<li><b>98%</b> issue traceability with zero manual follow-up</li>'+
+     '<li><b>2–4 weeks</b> earlier visibility of emerging delivery risk</li></ul>'+
+     '<h4>Artefacts</h4>',
+   shots:["uat-exit-analyzer","module-progress-matrix","test-reporting","test-uat-control","test-issue-analytics","jira-workspace"]},
+
+ c2:{sub:"Case study 02 · PTT Global Chemical group",
+   ti:"VMCS — eight vendor touchpoints into two connected portals",
+   html:'<h4>The mandate</h4><p style="font-size:15px;color:var(--mute);line-height:1.68">Own the as-is / to-be end-to-end Procure-to-Pay architecture and the legacy disposition strategy for a group-wide vendor transformation.</p>'+
+     '<h4>The problem</h4><p style="font-size:15px;color:var(--mute);line-height:1.68">Eight vendor touchpoints — paper registration, GEP vendor registration, GCME-VMS, Smart Work Request, PO Tracking, Shipping Management, Smart Receiving and Payment Tracking. Eight systems, four registrations, three logins, and no single view of the vendor.</p>'+
+     '<h4>Legacy disposition — the decision that sets the plan</h4><div class="scroller"><table class="sp">'+
+     '<tr><td>A · Move to core</td><td>Functionality that belongs in S/4HANA — Smart Accrual, Smart Receiving, Bank Guarantee</td></tr>'+
+     '<tr><td>B · Re-integrate</td><td>Mature specialist tools retained and re-interfaced — WMRO+, MMOS1 (XHQ), GMM, ITAS, LIMS</td></tr>'+
+     '<tr><td>C · Re-design</td><td>Fragmented vendor-facing systems rebuilt into VMCS</td></tr>'+
+     '<tr><td>D · Report only</td><td>Reporting consumers moved onto the data platform rather than rebuilt</td></tr>'+
+     '<tr><td>Retire</td><td>Redundant systems decommissioned with the process they supported</td></tr></table></div>'+
+     '<h4>Three modules delivered</h4><ul>'+
+     '<li><b>Vendor Collaboration Portal</b> — discovery, account management, registration with credit scoring and bank guarantee, PO / invoice / delivery / payment tracking, PDPA consent, RBAC and audit log</li>'+
+     '<li><b>Vendor Management Portal</b> — AVL search, qualification and criticism management, on/off-boarding approval, per-PO and annual performance evaluation, vendor risk</li>'+
+     '<li><b>Procurement Operation Support</b> — smart work request, quotation approval, PO tracking and follow-up, delivery confirmation, smart receiving, penalty and return, payment status</li></ul>'+
+     '<div class="note"><b>Sequenced against contract reality:</b> the GEP contract expiry (Sep 2025) and the Ariba downstream contract expiry (Aug 2026), plus the go-live dates of dependent legacy programmes.</div>'+
+     '<h4>Artefacts</h4>',
+   shots:["vmcs-consolidation","ptp-asis","ptp-tobe","vmcs-ui","vendor-onboarding","vmcs-module1","vmcs-module2","vmcs-module3","vmcs-features"]},
+
+ c3:{sub:"Case study 03 · PTT Global Chemical · 2019 – 2023",
+   ti:"Building a data governance function, then making it BAU",
+   html:'<h4>The mandate</h4><p style="font-size:15px;color:var(--mute);line-height:1.68">Stand up enterprise data governance from nothing and drive six workstreams in parallel — organisation, policy, data product delivery, change management, technology, and DG adoption for SAP data sources.</p>'+
+     '<h4>Adoption sequence</h4><div class="scroller"><table class="sp">'+
+     '<tr><td>2020 · Foundation</td><td>DG organisation and operating model, policy / standards / procedures, measurement formulas, tooling assessment, <b>Data Quality Index established</b></td></tr>'+
+     '<tr><td>2021 · Critical domains</td><td>Stewardship engagement, policy announced, CDE / DQ rules / metadata / access established, data platform implemented, <b>&gt;40% SAP master data covered</b></td></tr>'+
+     '<tr><td>2022 · Scale out</td><td>Stewardship sprint 1 (6 domains), standards announced group-wide, DQ rules on tooling, org-wide training, <b>&gt;60% coverage</b></td></tr>'+
+     '<tr><td>2023 → · Sustain</td><td>BAU operational support, DG and DI standardisation, 22 domains accumulated, sprint 2 (16 domains), Informatica migration, <b>&gt;80% coverage</b></td></tr></table></div>'+
+     '<h4>The number it produces</h4><ul>'+
+     '<li><b>98.80% composite DQI</b> against a 98.00% target, running <b>132 business rules</b> over <b>5,988,703 records</b> per measurement cycle</li>'+
+     '<li>Dimensional scoring — completeness 99.90%, accuracy 99.37%, uniqueness 98.64%, validity 97.33%, reliability 95.42%</li>'+
+     '<li><b>39 enterprise data domains</b> mapped to the value chain and classified for PDPA sensitivity</li></ul>'+
+     '<h4>Governance authored</h4><ul>'+
+     '<li><b>Three-tier policy architecture</b> — governing DG policy, supporting policies (content handling, metadata, security, quality, master data, classification), and procedures</li>'+
+     '<li><b>Operating model</b> — four options assessed and put to the executive with trade-offs and org structures</li>'+
+     '<li><b>DQ management process</b> — documented end to end across six roles, from monthly report through owner sign-off</li></ul>'+
+     '<h4>Artefacts</h4>',
+   shots:["dq-dashboard","dg-39-domains","dq-value-chain","dg-roadmap","dq-process","dg-framework","dg-operating-model","dg-capability-stack","dg-data-product","dg-service-utilization","dg-smart-operation"]}
+};
+var ov=document.getElementById('ov'), pbody=document.getElementById('pbody'),
+    ptitle=document.getElementById('ptitle'), psub=document.getElementById('psub'), lastOpener=null;
+
+function byFile(f){ for(var k=0;k<G.length;k++){ if(G[k].f===f) return G[k]; } return null; }
+function openCase(key, opener){
+  var c=CASES[key]; if(!c) return;
+  psub.textContent=c.sub; ptitle.textContent=c.ti;
+  var shots='<div class="pshots">';
+  c.shots.forEach(function(f){
+    var m=byFile(f); if(!m) return;
+    shots += '<button type="button" data-full="gal/'+f+'.jpg" data-title="'+m.ti.replace(/"/g,'&quot;')+'" data-cap="'+m.c.replace(/"/g,'&quot;')+'">'+
+             '<img src="gal/'+f+'-t.jpg" alt="'+m.ti.replace(/"/g,'&quot;')+'" loading="lazy"></button>';
+  });
+  shots += '</div>';
+  pbody.innerHTML = c.html + shots;
+  pbody.scrollTop=0;
+  ov.classList.add('on'); document.body.style.overflow='hidden';
+  lastOpener=opener||null;
+  document.getElementById('pclose').focus();
+}
+function closeCase(){ ov.classList.remove('on'); document.body.style.overflow=''; if(lastOpener){ lastOpener.focus(); lastOpener=null; } }
+document.addEventListener('click', function(e){
+  var o=e.target.closest ? e.target.closest('[data-open]') : null;
+  if(o){ openCase(o.dataset.open, o); return; }
+  if(e.target.closest && e.target.closest('#pclose')){ closeCase(); return; }
+  if(e.target===ov){ closeCase(); }
+});
+
+/* ───────── keyboard ───────── */
+document.addEventListener('keydown', function(e){
+  if(lb.classList.contains('on')){
+    if(e.key==='Escape') closeLb();
+    return;
+  }
+  if(ov.classList.contains('on')){ if(e.key==='Escape') closeCase(); return; }
+  if(e.key==='ArrowLeft') go(i-1,true);
+  else if(e.key==='ArrowRight') go(i+1,true);
+});
+
+/* ───────── nav: progress, spy, dots ───────── */
+var SECT=[{id:'top',l:'Top'},{id:'capability',l:'Capability'},{id:'work',l:'Work'},{id:'gallery',l:'Deliverables'},{id:'signals',l:'Evidence'},{id:'experience',l:'Experience'}];
+var dots=document.getElementById('dots');
+SECT.forEach(function(s){
+  var b=document.createElement('button');
+  b.type='button'; b.dataset.label=s.l; b.setAttribute('aria-label','Go to '+s.l);
+  b.addEventListener('click', function(){
+    var el=document.getElementById(s.id);
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+  dots.appendChild(b);
+});
+var prog=document.getElementById('prog'), links=Array.prototype.slice.call(document.querySelectorAll('#navlinks a'));
+function spy(){
+  var h=document.documentElement;
+  var max=h.scrollHeight-h.clientHeight;
+  prog.style.width = (max>0 ? (h.scrollTop/max*100) : 0) + '%';
+  var y=window.scrollY+110, best=0;
+  SECT.forEach(function(s,n){ var el=document.getElementById(s.id); if(el && el.offsetTop<=y) best=n; });
+  Array.prototype.forEach.call(dots.children,function(b,n){
+    if(n===best) b.setAttribute('aria-current','true'); else b.removeAttribute('aria-current');
+  });
+  links.forEach(function(a){
+    var t=a.getAttribute('href').slice(1);
+    if(t===SECT[best].id) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current');
+  });
+}
+var t=false;
+window.addEventListener('scroll', function(){
+  if(t) return; t=true;
+  requestAnimationFrame(function(){ spy(); t=false; });
+}, {passive:true});
+
+/* ───────── boot ───────── */
+buildRail();
+paint();
+booted=true;
+if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){ setPlaying(false); }
+else { tickOn(); }
+spy();
+})();
+</script>
+</body>
+</html>
